@@ -1,0 +1,117 @@
+\begin{thebibliography}{10}
+
+\bibitem{AhmedKarmakar-106}
+{\sc Ahmed, S., Karmakar, G.~C., and Kamruzzaman, J.}
+\newblock An environment-aware mobility model for wireless ad hoc network.
+\newblock {\em Computer Networks 54}, 9 (2010), 1470--1489.
+
+\bibitem{Aslam}
+{\sc Aslam, J., Lim, S., Pan, X., and Rus, D.}
+\newblock City-scale traffic estimation from a roving sensor network.
+\newblock In {\em Proceedings of the 10th ACM Conference on Embedded Network
+  Sensor Systems\/} (New York, NY, USA, 2012), SenSys '12, ACM, pp.~141--154.
+
+\bibitem{broch1998performance}
+{\sc Broch, J., Maltz, D.~A., Johnson, D.~B., Hu, Y.-C., and Jetcheva, J.}
+\newblock A performance comparison of multi-hop wireless ad hoc network routing
+  protocols.
+\newblock In {\em Proceedings of the 4th annual ACM/IEEE international
+  conference on Mobile computing and networking\/} (1998), ACM, pp.~85--97.
+
+\bibitem{ChoffnesBustamante-93}
+{\sc Choffnes, D.~R., and Bustamante, F. A. N.~E.}
+\newblock An integrated mobility and traffic model for vehicular wireless
+  networks.
+\newblock In {\em Proceedings of the 2nd ACM international workshop on
+  Vehicular ad hoc networks\/} (2005), pp.~69--78.
+
+\bibitem{Ganti}
+{\sc Ganti, R., Srivatsa, M., Ranganathan, A., and Han, J.}
+\newblock Inferring human mobility patterns from taxicab location traces.
+\newblock In {\em Proceedings of the 2013 ACM International Joint Conference on
+  Pervasive and Ubiquitous Computing\/} (New York, NY, USA, 2013), UbiComp '13,
+  ACM, pp.~459--468.
+
+\bibitem{vHuWang-23}
+{\sc Hu, Y., Wang, H., Xia, C., Li, W., and Yang, Y.}
+\newblock On the distribution of inter contact time for {DTN}s.
+\newblock In {\em Local Computer Networks (LCN), 2012 IEEE 37th Conference
+  on\/} (2012), IEEE, pp.~152--155.
+
+\bibitem{HuangZhang-105}
+{\sc Huang, H., Zhang, D., Zhu, Y., Li, M., and Wu, M.-Y.}
+\newblock A metropolitan taxi mobility model from real gps traces.
+\newblock {\em J. UCS 18}, 9 (2012), 1072--1092.
+
+\bibitem{HuangZhu-88}
+{\sc Huang, H., Zhu, Y., Li, X., Li, M., and Wu, M.-Y.}
+\newblock Meta: A mobility model of metropolitan taxis extracted from gps
+  traces.
+\newblock In {\em Wireless Communications and Networking Conference (WCNC),
+  2010 IEEE\/} (2010), pp.~1--6.
+
+\bibitem{KeranenOtt-155}
+{\sc Keraen, A., Ott, J., and Karkkainen, T.}
+\newblock The {ONE} simulator for {DTN} protocol evaluation.
+\newblock In {\em Proceedings of the 2nd International Conference on Simulation
+  Tools and Techniques\/} (2009), ICST (Institute for Computer Sciences,
+  Social-Informatics and Telecommunications Engineering), p.~55.
+
+\bibitem{KimKotz-99}
+{\sc Kim, M., Kotz, D., and Kim, S.}
+\newblock Extracting a mobility model from real user traces.
+\newblock In {\em INFOCOM 2006. 25th IEEE International Conference on Computer
+  Communications. Proceedings\/} (2006), vol.~6, pp.~1--13.
+
+\bibitem{LuChen-104}
+{\sc Lu, X., Chen, Y.-c., Leung, I., Xiong, Z., and Li~O, P.}
+\newblock A novel mobility model from a heterogeneous military manet trace.
+\newblock In {\em Ad-hoc, Mobile and Wireless Networks}, Ad-hoc, Mobile and
+  Wireless Networks. Springer, 2008, pp.~463--474.
+
+\bibitem{MahajanPotnis-102}
+{\sc Mahajan, A., Potnis, N., Gopalan, K., and Wang, A.}
+\newblock Modeling vanet deployment in urban settings.
+\newblock In {\em Proceedings of the 10th ACM Symposium on Modeling, Analysis,
+  and Simulation of Wireless and Mobile Systems\/} (2007), pp.~151--158.
+
+\bibitem{MartinezCano-87}
+{\sc Martinez, F.~J., Cano, J.-C., Calafate, C.~T., and Manzoni, P.}
+\newblock Citymob: a mobility model pattern generator for vanets.
+\newblock In {\em Communications Workshops, 2008. ICC Workshops '08. IEEE
+  International Conference on\/} (2008), pp.~370--374.
+
+\bibitem{MayerWaldhorst-108}
+{\sc Mayer, C.~P., and Waldhorst, O.~P.}
+\newblock On the impact of graph structure on mobility in opportunistic mobile
+  networks.
+\newblock In {\em Computer Communications Workshops (INFOCOM WKSHPS), 2011 IEEE
+  Conference on\/} (2011), pp.~882--887.
+
+\bibitem{PengDong-101}
+{\sc Peng, W., Dong, G., Yang, K., Su, J., and Wu, J.}
+\newblock A random road network model for mobility modeling in mobile
+  delay-tolerant networks.
+\newblock In {\em Mobile Ad-hoc and Sensor Networks (MSN), 2012 Eighth
+  International Conference on\/} (2012), pp.~140--146.
+
+\bibitem{SahaJohnson-91}
+{\sc Saha, A.~K., and Johnson, D.~B.}
+\newblock Modeling mobility for vehicular ad-hoc networks.
+\newblock In {\em Proceedings of the 1st ACM International Workshop on
+  Vehicular Ad Hoc Networks\/} (2004), pp.~91--92.
+
+\bibitem{4068700}
+{\sc Yousefi, S., Mousavi, M., and Fathy, M.}
+\newblock Vehicular ad hoc networks (vanets): Challenges and perspectives.
+\newblock In {\em ITS Telecommunications Proceedings, 2006 6th International
+  Conference on\/} (June 2006), pp.~761--766.
+
+\bibitem{ZhangKurose-98}
+{\sc Zhang, X., Kurose, J., Levine, B.~N., Towsley, D., and Zhang, H.}
+\newblock Study of a bus-based disruption-tolerant network: mobility modeling
+  and impact on routing.
+\newblock In {\em Proceedings of the 13th Annual ACM International Conference
+  on Mobile Computing and Networking\/} (2007), pp.~195--206.
+
+\end{thebibliography}
