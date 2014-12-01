@@ -1,24 +1,10 @@
-\subsection{Modeling process}
-\label{section_design}
-START is modeling in both microscopic and macroscopic aspect. In the microscopic aspect,  taxi speed and duration for vacant or occupied status are modeled respectively. During the period for a status, nodes's speed will follow the speed distribution of the status and stay in the status for a certain time, which will be assigned by the distribution of duration time. In consequence,  taxi behavior of the two state can be abstracted.
+Movement model defines the mobility pattern of nodes, which can be represented as a collection of pathes¡¡$Paths:<p_1,p_2,...,p_n>$, so dose START. A $p_i$ includes two steps, destination selection and moving process from source location to destination.
 
-In the macroscopic aspect, researchers \cite{HuangZhang-105} have explored the travel pattern from one region to another.
-In that case, we can assign the travel origination, path and destination based on the regularity instead of assign them  randomly. Instead of simply dividing areas into $n*m$ cells. We believe taxi drivers prefers to go to some hot regions, such as train station or film theaters.
-So whole area is divided into small cells and define taxi dense areas and sparse area as follows:
+\emph{Destination selection:} In START, to select a destination of a node is closely related to note only its current location but also its current status. Dividing the area into regions by the density of dropping-passenger events or loading passenger events respectively, two transition probability matrixes are calculated, one is the probability from dropping-passenger event regions $\{DR\}$ to loading-passenger events regions $\{LR\}$. Note that $\bigcup\{DR\}=\bigcup\{LR\}=AREA$. If the status of a taxi changes to vacant, firstly, a distance will be calculated by the speed and duration distribution. Then, a region is selected from LR by querying the transition matrix from $\{DR\}$ to $\{LR\}$ and the distance. finally, START will randomly select a map node in the region as the destination. When the status of a texi changes to Occupied, the destination selection process is similar. During this process, the speed, duration distribution for occupied status and the transition matrix from $\{LR\}$ to $\{DR\}$ will be utilized accordingly.
 
-\begin{description}
-  \item[Cell] the area is divided into m*n grids, which can be notated as $(x, y, length_{left},length_{top}, length_{right}, length_{bottom});0 \leqq x <m,0 \leqq y < n$. $x$ and $y$ are the index of cells.
-  \item[Region] We define region as a collection of cells,that is $\{cell\}$.
-  \item[Event density for event 1] event density is the number of event 1 happened in certain cell during a period.
-  \item[Event density threshold] to define "higher event density", a threshold is set. A cell is with higher event density, if the event density is higher than the threshold.
-  \item[Dense region]   Cell sequence adjacent with each other and event density in them is higher than the event density threshold.
-  \item[Sparse region]  other cells expect for the cells in dense regions.
+\emph{Moving process:} When the source (current location) and destination is known, next step is to find a path and set the speed. To simplify, we adopt the dijstra algorithm,[XXXX],XXXX, to route from source to destination on map. The speed is assigned by the speed distribution of the corresponding status. 
 
-\end{description}
+Based on the design above, we model the movement on the speed, duration and region transition matrix respectively.
 
-As a taxi's trace can be regarded as a Markov process, the One-step transition probability matrix between regions is calculated. A trace can be defined as a collection of path $\{path_i\}$, while $path_i=(<c^i_0, c^i_1, c^i_2,..., c^i_{dest}>, speed_i)$, $c$ means a coordinate,$(x,y)$.
-For each node, a initial position will be assigned in recognized dense region. $path_i$ will set $c^i_0$ as its current position and then determine the $c^i_{dest}$ by the area transition probability, to which the node distribution will conform. A node move from $c^i_j$ to $c^i_{j+1}$ by choosing an adjacent cell, defined in section \ref{section_design}, with highest area transition probability. After a path is found, node will move towards the destination along the path.
 
-For every path, a speed will randomly assigned by the speed distribution for its status. Specially, if a node cannot reach the destination in its current status duration time, the path will be divide into some sub-pathes with specific speed values. Status duration is also randomly generated following the corresponding status duration distribution.
 
-With the transition probability matrix, the macroscopic movement of nodes can be developed. 
