@@ -68,13 +68,18 @@ Firstly, the data set will be introduced in section \ref{section_trace_data}. Th
 
 According to experience in daily life, the following two assumptions are given:
 
-\begin{description}
-  \item[Assumption 1]\label{assumptions_1} The behavior of a taxi will change when its status changes. When a taxi is taking passengers, its destination is fixed, and the speed of it is relatively faster. On the contrary, when a taxi is vacant, it will slow down or even stop to search for potential passengers along the road. Thus, taxi behavior characteristics, such as speed and the status duration varies consequently.
-  \item[Assumption 2]\label{assumptions_2} Movement behavior associates with geographic feathers.
-    Drivers waiting for passengers tend to some special regions (such as railway station, airport, shopping mall), in order to reduce the waiting time and increase their earnings. Consequently, the distribution of taxi is not uniform.
-\end{description}
-
-Therefore, speed and duration distribution law for each status are studied to support \emph{assumption 1}. And the taxi density distribution is investigated to evaluate the \emph{assumption 2}.
+\begin{itemize}
+  \item \textbf{Assumption 1:}The behavior of a taxi will change when its status changes. When a taxi is taking passengers, its destination is fixed, and the speed of it is relatively faster. In contrast, when a taxi is vacant, it will slow down or even stop to search for potential passengers along the road. Thus, taxi behavior characteristics, such as speed and the status duration varies consequently.
+    
+  \item \textbf{Assumption 2:} The movement behavior of taxies associates with geographic feathers.
+      \begin{enumerate}
+        \item The destination selection will be influenced by different regions.
+        \item xxxx
+      \end{enumerate}
+\end{itemize}
+   
+   Therefore, we analysis the speed ,duration and load/drop-passenger events distribution to estimate our assumptions.  
+   
 \input{file_speed_statics}
 
 \input{file_lasting_time_for_each_status}
@@ -85,11 +90,12 @@ Therefore, speed and duration distribution law for each status are studied to su
 \label{section_modeling}
 \input{file_model_design}
 
+\input{file_matrix_of_transition_probability}
+
 \input{file_speed_modeling}
 
 \input{file_lasting_time_modeling}
 
-\input{file_matrix_of_transition_probability}
 
 \input{file_evaluation}
 
