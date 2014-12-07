@@ -3,10 +3,27 @@
 
 Based on the definition of dense region and sparse region are recognized. By dividing the region within the Fifth Ring Road, Beijing, China, about $750 km^2$, into $100*100$grids and utilizing the GPS records from March 3,2011 to March 7,2011, regions are recognized. Every cell is regarded as square with length about $274m$. Since area size will affect the area transition probability,a single dense area cannot be larger than 100 cells.
 The node dense threshold is set as 121, which is the average node number in the top 5000 dense cells.  Shown as  fig.\ref{figure_dense_area},156 dense areas are recognized and marked by different colors, and the white area is regarded as the sparse area.
+%%每个分布开头一定要用&符号，其中\qquad 为大空格命令
 
+\begin{equation}\label{cell}
+\begin{array}{c}
+CELL_{x,y}::=\{(lon,lat)|x \le \frac{{lon}}{{len_x}} < x + 1,\\
+y \le \frac{{lat}}{{len_y}} < y + 1\}
+\end{array}
+\end{equation}
 
+\begin{equation}\label{region}
+  \begin{array}{r}
+REGION_m:: = \{ CEL{L_{x,y}}|\exists CELL_{i,j} \in REGION_m\\
+\Rightarrow \|x - i\| \le 1,\|y - j\| \le 1\}
+\end{array}
+\end{equation}
 
-\begin{figure*}[!h]
+$\bigcup AREA_{load}=\bigcup AREA_{drop}=AREA$
+%%
+$p_{i\rightarrow j}^{0\rightarrow 1}$
+$p_{i\rightarrow j}^{1\rightarrow 0}$
+\begin{figure*}[htbp]
 \centering
 \subfigure[drop-passenger event regions]{\includegraphics[width=0.3\textwidth]{figures_201103/region/Areas-2011_event0.eps}}
 \subfigure[load-passenger event regions]{\includegraphics[width=0.3\textwidth]{figures_201103/region/Areas-2011_event1.eps}}

@@ -1,5 +1,5 @@
 
-\documentclass[letterpaper,twocolumn,10pt]{article}
+\documentclass[letterpaper,twocolumn,10pt]{IEEEtran}
 \usepackage{usenix,epsfig,endnotes}
 \usepackage{color}
 \usepackage{amssymb}
@@ -36,6 +36,8 @@ corresponding author
 %Name Institution
 } % end author
 
+
+
 \maketitle
 
 % Use the following at camera-ready time to suppress page numbers.
@@ -70,21 +72,22 @@ According to experience in daily life, the following two assumptions are given:
 
 \begin{itemize}
   \item \textbf{Assumption 1:}The behavior of a taxi will change when its status changes. When a taxi is taking passengers, its destination is fixed, and the speed of it is relatively faster. In contrast, when a taxi is vacant, it will slow down or even stop to search for potential passengers along the road. Thus, taxi behavior characteristics, such as speed and the status duration varies consequently.
-    
+
   \item \textbf{Assumption 2:} The movement behavior of taxies associates with geographic feathers.
       \begin{enumerate}
         \item The destination selection will be influenced by different regions.
         \item xxxx
       \end{enumerate}
 \end{itemize}
-   
-   Therefore, we analysis the speed ,duration and load/drop-passenger events distribution to estimate our assumptions.  
-   
-\input{file_speed_statics}
 
-\input{file_lasting_time_for_each_status}
 
-\input{file_taxi_density_distribution}
+   Therefore, we analysis the speed ,duration and load/drop-passenger events distribution to estimate our assumptions.
+
+%%\input{file_speed_statics}
+
+%%\input{file_lasting_time_for_each_status}
+
+%%\input{file_taxi_density_distribution}
 
 \section{Modeling}
 \label{section_modeling}

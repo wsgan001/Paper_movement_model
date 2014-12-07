@@ -1,8 +1,9 @@
+
 Movement model defines the mobility pattern of nodes, which can be represented as a collection of pathes¡¡$Paths:<p_1,p_2,...,p_n>$, so dose START. A $p_i$ includes two steps, destination selection and moving process from source location to destination.
 
 \emph{Destination selection:} In START, to select a destination of a node is closely related to note only its current location but also its current status. Dividing the area into regions by the density of dropping-passenger events or loading passenger events respectively, two transition probability matrixes are calculated, one is the probability from dropping-passenger event regions $\{DR\}$ to loading-passenger events regions $\{LR\}$. Note that $\bigcup\{DR\}=\bigcup\{LR\}=AREA$. If the status of a taxi changes to vacant, firstly, a distance will be calculated by the speed and duration distribution. Then, a region is selected from LR by querying the transition matrix from $\{DR\}$ to $\{LR\}$ and the distance. finally, START will randomly select a map node in the region as the destination. When the status of a texi changes to Occupied, the destination selection process is similar. During this process, the speed, duration distribution for occupied status and the transition matrix from $\{LR\}$ to $\{DR\}$ will be utilized accordingly.
 
-\emph{Moving process:} When the source (current location) and destination is known, next step is to find a path and set the speed. To simplify, we adopt the dijstra algorithm,[XXXX],XXXX, to route from source to destination on map. The speed is assigned by the speed distribution of the corresponding status. 
+\emph{Moving process:} When the source (current location) and destination is known, next step is to find a path and set the speed. To simplify, we adopt the dijstra algorithm,[XXXX],XXXX, to route from source to destination on map. The speed is assigned by the speed distribution of the corresponding status.
 
 Based on the design above, we model the movement on the speed, duration and region transition matrix respectively.
 
