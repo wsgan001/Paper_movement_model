@@ -19,16 +19,16 @@ REGION_m:: = \{ CEL{L_{x,y}}|\exists CELL_{i,j} \in REGION_m\\
 \end{array}
 \end{equation}
 
-$\bigcup AREA_{load}=\bigcup AREA_{drop}=AREA$
-%%
+
 $p_{i\rightarrow j}^{0\rightarrow 1}$
 $p_{i\rightarrow j}^{1\rightarrow 0}$
-\begin{figure*}[htbp]
+\begin{figure}[htbp]
 \centering
-\subfigure[drop-passenger event regions]{\includegraphics[width=0.3\textwidth]{figures_201103/region/Areas-2011_event0.eps}}
-\subfigure[load-passenger event regions]{\includegraphics[width=0.3\textwidth]{figures_201103/region/Areas-2011_event1.eps}}
-\caption{Region recognition for event 0 and 1}\label{figure_region_recognizition}
-\end{figure*}
+\subfigure[passenger off event regions]{\includegraphics[width=0.4\textwidth]{figures_201103/region/Areas-2011_event0.eps}}
+\subfigure[passenger on event regions]{\includegraphics[width=0.4\textwidth]{figures_201103/region/Areas-2011_event1.eps}}
+\centering
+\caption{Region recognition}\label{figure_region_recognizition}
+\end{figure}
 
 
 A car's trajectory can be regarded as a markov process, and the markov chain nodes are the areas in the city.
