@@ -5,7 +5,7 @@ A travel path of a taxi can be simplified as a multi-hop process, in which a hop
 
 To calculate the region transition probability, the \textbf{region recognition process} should be executed in advance.
 
-Firstly, we divide the area into $100\times 100$ grids, and define cells in it as equation \ref{cell}. Then, we consider region as adjacent cells as equation \ref{region}. 
+Firstly, we divide the area into $100\times 100$ grids, and define cells in it as equation \ref{cell}. Then, we consider region as adjacent cells as equation \ref{region}.
 
 \begin{equation}\label{cell}
 \begin{array}{c}
@@ -21,7 +21,7 @@ REGION_m:: = \{ CEL{L_{x,y}}|\exists CELL_{i,j} \in REGION_m\\
 \end{array}
 \end{equation}
 
-By clustering cells into regions, two set of region $\{REGION_m^{on}\}$ and $\{REGION_n^{off}\}$ can be recognized. The clustering idea is to put adjacent cells with event density larger than the event threshold $\eta$ into one cluster. To avoid the size of the region become too large or too small, we set a $CLUSTERSIZE$ to restrict a region, say $\|REGION_i\|\leq CLUSTERSIZE$ , and only limit the top 200 regions, in which $CELL_{x,y}.events\geq \eta$. After that, the other cells not belong to the top 200 regions, will be cluster into regions, while $\|REGION_j\|\leq CLUSTERSIZE$. 
+By clustering cells into regions, two set of region $\{REGION_m^{on}\}$ and $\{REGION_n^{off}\}$ can be recognized. The clustering idea is to put adjacent cells with event density larger than the event threshold $\eta$ into one cluster. To avoid the size of the region become too large or too small, we set a $CLUSTERSIZE$ to restrict a region, say $\|REGION_i\|\leq CLUSTERSIZE$ , and only limit the top 200 regions, in which $CELL_{x,y}.events\geq \eta$. After that, the other cells not belong to the top 200 regions, will be cluster into regions, while $\|REGION_j\|\leq CLUSTERSIZE$.
 We sort the cells by event density in descending order, and begin with the first cell to search is neighbors whether to join the same region using breadth traversal. The region recognition results for on/off events are shown in figure \ref{figure_region_recognizition}. The detail clustering algorithm is presented in the appendix. In addition, the $CLUSTERSIZE=200$, $\eta=121$ for on event and $\eta=141$ for off event set by the average event density of the top 5000 cells order by its event density.
 
 \begin{figure}[htbp]
@@ -32,7 +32,7 @@ We sort the cells by event density in descending order, and begin with the first
 \caption{Region recognition}\label{figure_region_recognizition}
 \end{figure}
 
-\textbf{The calculate process of the region transition probability:} After clustering cells into regions, the transition probability from $REGION_i^{on/off}$ to $REGION_j^{off/on}$, donated as $p_{i\rightarrow j}^{on\rightarrow off /off\rightarrow on}$. To substantiate, the calculate process of $p_{i\rightarrow j}^{on\rightarrow off}$ will be introduced in detail. Clearly, the records of $event=on$ in $REGION_i^{on}$ can be required from the data set. the record amount is donated as $\|RECORDS_i^{on}=\{record_{REGION_i^{on}}\}\|$. For $record \in RECORD_i^{on}$, the next event and location can be easily required. Therefore, the record can be associated with the its next hop information to $(taxiid, location_{current}, event,event_{next},location_{next})$. The $RECORDS_{i\to j}^{on\to off}=\{record|event=on\cap event_{next}=off\cap location_{current}\in REGION_i^{on}\cap location_{next}\in REGION_j^{off}\}$ will be obtain.
+\textbf{The calculate process of the region transition probability:} After clustering cells into regions, the transition probability from $REGION_i^{on/off}$ to $REGION_j^{off/on}$, donated as $p_{i\rightarrow j}^{on\rightarrow off /off\rightarrow on}$. To substantiate, the calculate process of $p_{i\rightarrow j}^{on\rightarrow off}$ will be introduced in detail. Clearly, the records in $REGION_i^{on}$ can be required from the data set easily. the record amount is donated as $\|RECORDS_i^{on}=\{record|record.location\in{REGION_i^{on}\cap record.event=on}\}\|$. For $record \in RECORD_i^{on}$, the next event and location can be easily required. Therefore, the record can be associated with the its next hop information to $(taxiid, location_{current}, event,event_{next},location_{next})$. The $RECORDS_{i\to j}^{on\to off}=\{record|event=on\cap event_{next}=off\cap location_{current}\in REGION_i^{on}\cap location_{next}\in REGION_j^{off}\}$ will be obtain.
 
 \begin{equation}\label{pij}
 p_{i \to j}^{on \to off} = \frac{\|RECORDS_{i\to j}^{on\to off}\|}{\|RECORDS_i^{on}\|}
@@ -40,7 +40,7 @@ p_{i \to j}^{on \to off} = \frac{\|RECORDS_{i\to j}^{on\to off}\|}{\|RECORDS_i^{
 
 
 \begin{equation}\label{transition_matrix}
-  P^{on\to off} = (p_{i\to j}^{on\to off})_{m*n}  
+  P^{on\to off} = (p_{i\to j}^{on\to off})_{m*n}
 \end{equation}
 
 \begin{equation}\label{transition_matrix}

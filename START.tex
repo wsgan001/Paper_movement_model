@@ -83,11 +83,11 @@ According to the experience in daily life, the following two assumptions are giv
    Therefore, we analysis the speed,duration and passenger on/off events distribution to estimate our assumptions.
 
 
-%%\input{file_speed_statics}
+\input{file_speed_statics}
 
-%%\input{file_lasting_time_for_each_status}
+\input{file_lasting_time_for_each_status}
 
-%%\input{file_taxi_density_distribution}
+\input{file_taxi_density_distribution}
 
 \section{Modeling}
 \label{section_modeling}
@@ -102,10 +102,8 @@ According to the experience in daily life, the following two assumptions are giv
 
 \section{Conclusion}
 \label{section_conclusion}
-Since the mobility model is essential for mobile network, a novel mobility model START based on real GPS trace data is proposed. By assuming the taxi behavior is related with its statuses and taxi distribution in area is uneven, statistical experiments are conducted to verify those assumptions using the real trace data. Further, its parameter--speed and duration of each status are estimated respectively, and the region transition probability matrix is calculated. In this case, macroscopic (from one region to another) movement and microscopic movement(speed for each status) can be defined. Finally, the START is implemented on ONE simulator and estimate it by comparing with the real trace, RWP and Shortest Path movement Model. A simplified model, S-START, based on START is created, which modifies the parameters of speed distribution, and sets the parameters according to the speed distribution of each status. By comparing the START and the S-START, it can come to the conclusion that the taxi behavior in different status influences the node distribution and contact characteristics. In return, it proves our assumption 1.
-
-Shortest Path movement Model, based on the real map of Beijing and the Dijkstra algorithm, reflects the road structure of the city better than START. However, comparing the node distribution and contact feathers, START shows better performance. Shortest Path movement model takes geographic feathers into consideration, but it neglects uneven geographic distribution. RWP also disregards this feather. Those simulation results above validate the $assumption$ 2 in certain degree.
-
+Since the mobility model is essential for mobile network, a novel mobility model START based on real GPS trace data is proposed. By assuming the taxi behavior is related with its statuses and geographic feathers, statistical experiments are conducted to verify those assumptions using the real trace data. Further, its parameter--average speed of each status are estimated respectively, and the region transition probability is calculated. In this case, macroscopic movement, a node moves switch between on-event regions and off-event regions, and microscopic movement(speed for each status) can be defined. Finally, the START is implemented on ONE simulator and estimate it by comparing with the real trace, RWP and Shortest Path movement Model.
+Comparing the node distribution and contact feathers, START shows better performance.
 Simulation results demonstrate that START has a good approximation with reality.
 
 
