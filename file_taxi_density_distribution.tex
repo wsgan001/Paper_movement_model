@@ -1,18 +1,19 @@
 \subsection{Taxi event distribution}
 \label{section_taxi_denstiy_distribution}
 
-To validate $assumption 2$, we quantitatively analyze vehicles density in one hour. By dividing the whole network into $100*100$ grids, taxi density distributions for event 0, 1 are computed in each cell.As fig.\ref{figure_taxi_density_for_one_hour}.(d), (e), (f), it is obvious that the taxi density for event 4 is higher than for other events reaching up to $600 vehicles/cell$. The taxi density of cells on roads stayed in a relatively high level. Nevertheless, for event 1, the taxi density of most cells is less than 5, which means that less than 5 taxis during the time period took passengers in those locations, while the high dense cells occurred sparsely. By further exploring some high dense cells, it can be found that hot cells for event 0 and 1 include Beijing Train station, the junction of the south 4th Ring Road and subway line one in Beijing, China.
-
+To validate $assumption 2$, we quantitatively analyze vehicles density in one hour. By dividing the whole network into $100*100$ grids, taxi density distributions for event 0, 1 are computed in each cell.
 
 \begin{figure*}
 \centering
-\subfigure[$event=1,7:00-8:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=1_7_8_20110303.eps}}
-\subfigure[$event=1,12:00-13:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=1_12_13_20110303.eps}}
-\subfigure[$event=1,17:00-18:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=1_17_18_20110303.eps}}
-\subfigure[$event=0,7:00-8:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=0_7_8_20110303.eps}}
-\subfigure[$event=0,12:00-13:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=0_12_13_20110303.eps}}
-\subfigure[$event=0,17:00-18:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=0_17_18_20110303.eps}}
-\caption[c]{Taxi density for event 1 and 4 in one hour}\label{figure_taxi_density_for_one_hour}
+\subfigure[$on-event,7:00-8:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=1_7_8_20110303.eps}}
+\subfigure[$on-event,12:00-13:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=1_12_13_20110303.eps}}
+\subfigure[$on-event,17:00-18:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=1_17_18_20110303.eps}}
+\subfigure[$off-event,7:00-8:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=0_7_8_20110303.eps}}
+\subfigure[$off-event,12:00-13:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=0_12_13_20110303.eps}}
+\subfigure[$off-event,17:00-18:00$]{\includegraphics[width=0.3\textwidth]{figures_201103/events_dis/Event=0_17_18_20110303.eps}}
+\caption[c]{Taxi density for on-event and off-event in one hour}\label{figure_taxi_density_for_one_hour}
 \end{figure*}
 
-The amount of loading passengers in each cell shows geographic feathers and the distribution is uneven, which support the \emph{assumption 2}.
+Figure.\ref{figure_taxi_density_for_one_hour} shows the on/off events distribution in three time sections. In the morning, people begin to get out. so the on-event distribute is more even than that of off-event. this phenomenon may be caused by the on-event spots are mainly at the homes of the citizens, while the off-event spots tend to gather together at workplaces, railway stations or scenic spots. Besides, in the evening, the dispersion of on-event is of lower degree than that of off-event, for people coming home at that time.
+
+The amount of loading passengers in each cell shows geographic feathers:the distribution is uneven, and the difference between on/off-event distributions illustrates the on/off-event regions are different which support the \emph{assumption 2}.
