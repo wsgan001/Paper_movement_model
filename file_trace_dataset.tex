@@ -11,9 +11,9 @@ Each row includes a base station ID, company name, taxi ID ($id$), timestamp ($t
   \hline
   Event & Explanation \\
   \hline
-  0(off) & A taxi's status change to vacant.\\
+  0(drop) & A taxi's status change to vacant.\\
   \hline
-  1(on) & A taxi's status change to occupied.\\
+  1(load) & A taxi's status change to occupied.\\
   \hline
   2 & Set up defense.\\
   \hline
@@ -36,7 +36,7 @@ Each row includes a base station ID, company name, taxi ID ($id$), timestamp ($t
 \end{table}
 
 
-Especially, there are five types of events and four types of status. The explanations are as table \ref{table_event_detail}. We only discuss the vacant status and occupied status in this paper. Accordingly we utilize the on-event and off-event as well.
+Especially, there are five types of events and four types of status. The explanations are as table \ref{table_event_detail}. We only discuss the vacant status and occupied status in this paper. Accordingly we utilize the load-event and drop-event as well.
 
 
 
