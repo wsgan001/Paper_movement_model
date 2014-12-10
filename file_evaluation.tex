@@ -15,7 +15,7 @@ Trace samples and their snapshots are demonstrated in this section, shown as fig
 
 
 
-Fig.\ref{figure_tracesample} shows the trace in one day. The trace of the real data and START only cover some part of the area, while the trace of SP and RWP almost go through the whole area. Because SP and RWP will select a destination randomly, while START takes the associations between current region and destinations into consideration which satisfies the movement rules of taxies. 
+Fig.\ref{figure_tracesample} shows the trace in one day. The trace of the real data and START only cover some part of the area, while the trace of SP and RWP almost go through the whole area. Because SP and RWP will select a destination randomly, while START takes the associations between current region and destinations into consideration which satisfies the movement rules of taxies.
 \begin{figure}
 \centering
 \subfigure[Real Trace]{\includegraphics[width=0.4\textwidth]{figures_201103/Evaluation/trace_real.eps}}
@@ -44,34 +44,6 @@ From fig.\ref{figure_trace_snapshots}, Real trace START and SP movement model ex
 \caption{Trace snapshots}\label{figure_trace_snapshots}
 \end{figure}
 
-To further explore the node distribution feathers, by dividing areas into $10*10$ grids, (length of each cell is about 2400 meters), the node density distributions are investigated. An interpolation process is conducted on RWP traces, because it will not generate a position data until it changes its direction. Under this condition, middle point in the straight line created by two original points of continues time stamp is inserted for every 5 seconds. In each cell of grids in 20 seconds, the distinct nodes occurring are counted, that is, if a node prints its location in a cell twice, it will not add up to the node density in this square. Consequently, the interpolation process on RWP trace will not influence the results. Moreover, the upper limit of speed is 33.3 m/s, so that for every node, it can occur in no more than 3 cells in 20 seconds.  In table. \ref{figure_avg_var_node_density}, the average of node densities for models and real traces are close. Whereas, the variances change a lot from 4848 of RWP to 107423.3 of START. The variance of Real trace is large, because nodes in reality during a short time is not evenly distributed. Although, Shortest Path movement model takes the geographic characteristics into consideration, the difference from different road segments is disregarded.
-
-\begin{table}
-\centering
-\caption{Average and variance of node density}\label{figure_avg_var_node_density}
-\begin{tabular}{r|c|c}
-  \hline
-  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
- type & average & variance\\
-  \hline
-  Real Trace & 41.39175 & 107401.1 \\
-  START & 44.28421 & 107423.3 \\
-  S-START & 45.3 & 86084.9\\
-  ShortestPath & 43.41414 & 52820\\
-  RWP & 43.2 & 4848 \\
-  \hline
-\end{tabular}
-\end{table}
-
-\begin{figure}
-\centering
-\subfigure[Real Trace]{\includegraphics[width=0.4\textwidth]{figures_201103/Evaluation/ev_nodedis_trace.eps}}
-\subfigure[START]{\includegraphics[width=0.4\textwidth]{figures_201103/Evaluation/ev_nodedis_start.eps}}
-\subfigure[SP]{\includegraphics[width=0.4\textwidth]{figures_201103/Evaluation/ev_nodedis_sp.eps}}
-\subfigure[RWP]{\includegraphics[width=0.4\textwidth]{figures_201103/Evaluation/ev_nodedis_rwp.eps}}
-
-\caption{Node density in 20 seconds}\label{figure_node_distribution}
-\end{figure}
 
 
 \subsection{Contacts characteristics}
@@ -98,7 +70,7 @@ The contact time and inter contact time are evaluated as the indicators to valid
 
 Fig. \ref{figure_contacts}. (a)(b) is the contact time and inter-contact distribution, which shows the probability of the contact or inter-contact time smaller than certain time length. To substantiate, a point $(200,0.5)$ in these figures means the probability is 0.5 when contact or inter-contact time is shorter than $200s$. In addition, a point $(x,y)$ in \ref{figure_contacts}.(c) means the sum of contact time is y when the simulation time is x. In this figure, the three green lines of SP and the three blue lines of RWP are coincide with each other. To recognize the differences, we set y axis as log-scale in fig.\ref{figure_contacts}.(d).
 The curves of the total contact time vs. time presents a liner law. For SP and RWP, the differences of speed ranges show little influence on these curves.
-Clearly, the rank of the contact characteristic similarity with the real data is $START>SP>RWP$. 
+Clearly, the rank of the contact characteristic similarity with the real data is $START>SP>RWP$.
 
 To conclude, by comparing the node distribution and contact characteristics, the START mobility model performs good similarity with the real data.The evaluation results conform to our expectations. Because $START$ takes use of speed and geographic feathers related with status, While SP employs the map information and RWP is a random model taking use of no realistic data.
 
