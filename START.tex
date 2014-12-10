@@ -40,7 +40,7 @@ Department of Computer Science, University of North Carolina at Charlotte, Charl
 
 \subsection*{Abstract}
 Using a realistic mobility model will enhance the validity of simulations. However, the difficulty lies in discovering laws from large amounts of data and applying those rules. Researchers have been working on mobility model extracting from real data set, whereas the taxi behavior differences between different taxi statuses have been ignored in previous works.
-Based on the the experience in daily life, two assumptions related to the taxi status, one is the behavior of taxi will be influenced by the statuses and the other one is the macroscopic movement is related with different geographic feathers in corresponding status, are introduced and estimated by actual data. Based on the two assumptions, a novel taxi movement model START is proposed with respect to taxi statuses. The simulation results illustrate that the proposed movement model has a good approximation with reality in trace samples, distribution of nodes and the contact characteristics.
+Based on the the experience in daily life, two assumptions related to the taxi status, one is the behavior of taxi will be influenced by the statuses and the other one is the macroscopic movement is related with different geographic feathers in corresponding status, are introduced and estimated by actual data. Based on the two assumptions, a novel taxi mobility model START is proposed with respect to taxi statuses. The simulation results illustrate that the proposed mobility model has a good approximation with reality in trace samples, distribution of nodes and the contact characteristics.
 
 \subsection*{keyword}
 mobility model, taxi status,region recognition
@@ -62,7 +62,7 @@ Firstly, the data set will be introduced in section \ref{section_trace_data}. Th
 According to the experience in daily life, the following two assumptions are given:
 
 \begin{itemize}
-  \item \textbf{Assumption 1:}The behavior of a taxi will change when its status changes. When a taxi is taking passengers, its destination is fixed, and the speed of it is relatively faster. In contrast, when a taxi is vacant, it will slow down or even stop to search for potential passengers along the road. Thus, taxi behavior characteristics, such as speed and the status duration varies consequently.
+  \item \textbf{Assumption 1:}The behavior of a taxi will change when its status changes. When a taxi is occupied, its destination is certain, and the speed of occupied status will accelerate relatively. In contrast, when a taxi is vacant, it will slow down or even stop to search for potential passengers along the road. Thus, taxi behavior characteristics, such as speed and the status duration varies consequently.
 
   \item \textbf{Assumption 2:} The movement behavior of taxies associates with geographic feathers.
       \begin{enumerate}
@@ -95,7 +95,7 @@ According to the experience in daily life, the following two assumptions are giv
 
 \section{Conclusion}
 \label{section_conclusion}
-Since the mobility model is essential for mobile network, a novel mobility model START based on real GPS trace data is proposed. By assuming the taxi behavior is related with its statuses and geographic feathers, statistical experiments are conducted to verify those assumptions using the real trace data. Further, its parameter--average speed of each status are estimated respectively, and the region transition probability is calculated. In this case, macroscopic movement, a node moves switch between load-event regions and drop-event regions, and microscopic movement(speed for each status) can be defined. Finally, the START is implemented on ONE simulator and estimate it by comparing with the real trace, RWP and Shortest Path movement Model.
+Since the mobility model is essential for mobile network, a novel mobility model START based on real GPS trace data is proposed. By assuming the taxi behavior is related with its statuses and geographic feathers, statistical experiments are conducted to verify those assumptions using the real trace data. Further, its parameter--average speed of each status are estimated respectively, and the region transition probability is calculated. In this case, macroscopic movement, a node moves switch between load-event regions and drop-event regions, and microscopic movement(speed for each status) can be defined. Finally, the START is implemented on ONE simulator and estimate it by comparing with the real trace, RWP and Shortest Path mobility Model.
 Comparing the node distribution and contact feathers, START shows better performance.
 Simulation results demonstrate that START has a good approximation with reality.
 
