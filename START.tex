@@ -1,5 +1,5 @@
 
-\documentclass[twocolumn,10pt]{IEEEtran}
+\documentclass[camera-ready,twocolumn,10pt]{IEEEtran}
 \usepackage{usenix,epsfig,endnotes}
 \usepackage{color}
 \usepackage{amssymb}
@@ -9,6 +9,7 @@
 \DeclareGraphicsExtensions{.eps,.ps,.eps.gz,.ps.gz,.eps.Z}
 \usepackage{stfloats}
 \usepackage{float}
+\usepackage{caption}
 \begin{document}
 
 %don't want date printed
@@ -28,7 +29,7 @@ Beijing Key Laboratory of Network Technology, Beijing, P.R.China\\
 \and
 {\rm Yu Wang\thanks{
  This research has been partially supported by the US National Science Foundation (NSF) under Grant No. CNS-1319915 and CNS-1343355, the National Natural Science Foundation of China (NSFC) under Grant No.61300173 and No. 61170295, the Project of Aeronautical Science Foundation of China under Grant No.2013ZC51026 and No.2011ZC51024, the Fundamental Research Funds for the Central Universities under Grant No. YWF-12-LXGY-001, and the State Key Laboratory Software Development Environment and Network Information and Computing Center of Beihang University.}}\\
-Department of Computer Science, University of North Carolina at Charlotte, Charlotte, NC, USA\\
+Department of Computer Science, University of North Carolina at Charlotte, NC, USA\\
 % copy the following lines to add more authors
 % \and
 % {\rm Name}\\
@@ -40,7 +41,7 @@ Department of Computer Science, University of North Carolina at Charlotte, Charl
 
 \subsection*{Abstract}
 Using a realistic mobility model will enhance the validity of simulations. However, the difficulty lies in discovering laws from large amounts of data and applying those rules. Researchers have been working on mobility model extracting from real data set, whereas the taxi behavior differences between different taxi statuses have been ignored in previous works.
-Based on the the experience in daily life, two assumptions related to the taxi status, one is the behavior of taxi will be influenced by the statuses and the other one is the macroscopic movement is related with different geographic feathers in corresponding status, are introduced and estimated by actual data. Based on the two assumptions, a novel taxi mobility model START is proposed with respect to taxi statuses. The simulation results illustrate that the proposed mobility model has a good approximation with reality in trace samples, distribution of nodes and the contact characteristics.
+Based on the the experience in daily life, two assumptions related to the taxi status, one is the behavior of taxi will be influenced by the statuses and the other one is the macroscopic movement is related with different geographic feathers in corresponding status, are introduced and estimated by the real data. Based on the two assumptions, a novel taxi mobility model START is proposed with respect to taxi status. The simulation results illustrate that proposed mobility model has a good approximation with reality in trace samples, distribution of nodes and the contact characteristics.
 
 \subsection*{keyword}
 mobility model, taxi status,region recognition
@@ -64,12 +65,13 @@ According to the experience in daily life, the following two assumptions are giv
 \begin{itemize}
   \item \textbf{Assumption 1:}The behavior of a taxi will change when its status changes. When a taxi is occupied, its destination is certain, and the speed of occupied status will accelerate relatively. In contrast, when a taxi is vacant, it will slow down or even stop to search for potential passengers along the road. Thus, taxi behavior characteristics, such as speed and the status duration varies consequently.
 
-  \item \textbf{Assumption 2:} The movement behavior of taxies associates with geographic feathers.
+  \item \textbf{Assumption 2:} The movement behavior of taxis associates with geographic feathers. When taxis is occupied, the destination may be tend to some places, such as the airport. Meanwhile, when taxis are vacant, drives tend to some hot spots where more people want to take a taxi.
       \begin{enumerate}
         \item The destination selection will be influenced by different regions.
-        \item events occurs in different regions un-evenly, passenger drop and on events are distinct.
+        \item events occurs in different regions un-evenly, passenger drop and load events are distinct.
       \end{enumerate}
 \end{itemize}
+
 
 
 
