@@ -23,7 +23,7 @@ REGION_m:: = \{ CEL{L_{x,y}}|\exists CELL_{i,j} \in REGION_m\\
 
 By clustering cells into regions, two region sets, $\{REGION_m^{load}\}$ and $\{REGION_n^{drop}\}$, can be recognized. The main idea of clustering is to put adjacent cells with event density larger than the event threshold $\eta$ into a same region. To avoid the size of the region become too large or too small, we set a $CLUSTERSIZE$ to restrict a region, say $\|REGION_i\|\leq CLUSTERSIZE$ , and only limit the top 200 regions, in which $CELL_{x,y}.events\geq \eta$. After that, the other cells not belong to the top 200 regions, will also be clustered into regions, while $\|REGION_j\|\leq CLUSTERSIZE$. Consequently, every cells will be clustered into regions and the size of every region is not larger than $CLUSTERSIZE$.
 
-We sort the $100\times 100$ cells by event density in descending order, and begin with the first cell to search its neighbors whether to join the same region using breadth traversal. 
+We sort the $100\times 100$ cells by event density in descending order, and begin with the first cell to search its neighbors whether to join the same region using breadth traversal.
 The region recognition results for load/drop events are shown in figure \ref{figure_region_recognizition}.
 
 In figure \ref{figure_region_recognizition}, every colored block presents a region. In addition, the $CLUSTERSIZE=200$, $\eta=121$ for on event and $\eta=141$ for drop event set by the average event density of the top 5000 cells order by its event density. The detail clustering algorithm is presented in the appendix.
@@ -36,7 +36,7 @@ In figure \ref{figure_region_recognizition}, every colored block presents a regi
 \caption{Region recognition}\label{figure_region_recognizition}
 \end{figure}
 
-\textbf{The calculate process of the region transition probability:} After clustering cells into regions, the transition probability from $REGION_i^{load/drop}$ to $REGION_j^{drop/load}$, donated as $p_{i\rightarrow j}^{load\rightarrow drop /drop\rightarrow load}$. To substantiate, the calculate process of $p_{i\rightarrow j}^{load\rightarrow drop}$ will be introduced in detail. Clearly, the records in $REGION_i^{load}$ can be required from the data set easily. the record amount is donated as $\|RECORDS_i^{load}=\{record|record.location\in{REGION_i^{load}\cap record.event=load}\}\|$. For $record \in RECORD_i^{load}$, the next event and location can be easily required. Therefore, the record can be associated with the its next hop information to $(taxiid, location_{current}, event,event_{next},location_{next})$. The $RECORDS_{i\to j}^{load\to drop}=\{record|event=load\cap event_{next}=drop\cap location_{current}\in REGION_i^{load}\cap location_{next}\in REGION_j^{drop}\}$ will be obtain.
+\textbf{The calculate process of the region transition probability:} After clustering cells into regions, the transition probability from $REGION_i^{load/drop}$ to $REGION_j^{drop/load}$, donated as $p_{i\rightarrow j}^{load\rightarrow drop /drop\rightarrow load}$. To substantiate, the calculate process of $p_{i\rightarrow j}^{load\rightarrow drop}$ will be introduced in detail. The records in $REGION_i^{load}$ can be required from the data set easily. the record amount is donated as $\|RECORDS_i^{load}=\{record|record.location\in{REGION_i^{load}\cap record.event=load}\}\|$. For $record \in RECORD_i^{load}$, the next event and location can be easily required. Therefore, the record can be associated with the its next hop information to $(taxiid, location_{current}, event,event_{next},location_{next})$. The $RECORDS_{i\to j}^{load\to drop}=\{record|event=load\cap event_{next}=drop\cap location_{current}\in REGION_i^{load}\cap location_{next}\in REGION_j^{drop}\}$ will be obtain.
 
 \begin{equation}\label{pij}
 p_{i \to j}^{load \to drop} = \frac{\|RECORDS_{i\to j}^{load\to drop}\|}{\|RECORDS_i^{load}\|}
@@ -44,11 +44,11 @@ p_{i \to j}^{load \to drop} = \frac{\|RECORDS_{i\to j}^{load\to drop}\|}{\|RECOR
 
 
 \begin{equation}\label{transition_matrix}
-  P^{load\to drop} = (p_{i\to j}^{load\to drop})_{m*n}
+  P^{load\to drop} = (p_{i\to j}^{load\to drop})_{m\times n}
 \end{equation}
 
 \begin{equation}\label{transition_matrix}
-  P^{drop\to load} = (p_{i\to j}^{drop\to load})_{n*m}
+  P^{drop\to load} = (p_{i\to j}^{drop\to load})_{n\times m}
 \end{equation}
 
 %%\begin{equation}\label{equation_taxiset_matrix}
