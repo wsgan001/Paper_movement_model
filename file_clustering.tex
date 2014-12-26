@@ -1,4 +1,27 @@
 \appendix
+\begin{algorithm}
+\caption{$enqueueNeighbor(CELL_{x,y})$}
+\begin{algorithmic}
+\IF{$CELL_{x,y}.events\geq \eta$ \AND $size<CLUSTERSCALE$ \AND $CELL_{x,y}\notin UsedCells$}
+\STATE $ClusterQueue.enqueue(CELL_{x,y})$
+\STATE　$CELL_{x,y}.region=REGIONSEED$
+\STATE $UsedCells.add(CELL_{x,y})$
+\STATE $size=size+1$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{$enqueueNeighborOthers(CELL_{x,y})$}
+\begin{algorithmic}
+\IF{$size<CLUSTERSCALE$\AND $CELL_{x,y}\notin UsedCells$}
+\STATE $ClusterQueue.enqueue(CELL_{x,y})$
+\STATE　$CELL_{x,y}.region=REGIONSEED$\\
+\STATE $UsedCells.add(CELL_{x,y})$
+\STATE $size=size+1$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
 
 \begin{algorithm}\label{algorithm_connecting}
 \caption{Clustering}
@@ -47,26 +70,4 @@ $UsedCells=\varnothing$\\
 
 
 
-\begin{algorithm}
-\caption{$enqueueNeighbor(CELL_{x,y})$}
-\begin{algorithmic}
-\IF{$CELL_{x,y}.events\geq \eta$ \AND $size<CLUSTERSCALE$ \AND $CELL_{x,y}\notin UsedCells$}
-\STATE $ClusterQueue.enqueue(CELL_{x,y})$
-\STATE　$CELL_{x,y}.region=REGIONSEED$
-\STATE $UsedCells.add(CELL_{x,y})$
-\STATE $size=size+1$
-\ENDIF
-\end{algorithmic}
-\end{algorithm}
 
-\begin{algorithm}
-\caption{$enqueueNeighborOthers(CELL_{x,y})$}
-\begin{algorithmic}
-\IF{$size<CLUSTERSCALE$\AND $CELL_{x,y}\notin UsedCells$}
-\STATE $ClusterQueue.enqueue(CELL_{x,y})$
-\STATE　$CELL_{x,y}.region=REGIONSEED$\\
-\STATE $UsedCells.add(CELL_{x,y})$
-\STATE $size=size+1$
-\ENDIF
-\end{algorithmic}
-\end{algorithm}
