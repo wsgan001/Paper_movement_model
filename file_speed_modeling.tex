@@ -1,9 +1,6 @@
-\subsection{Parameter estimation of $\overline{speed}$ distribution}
+\subsection{Speed Distribution}
 \label{section_speed_modeling}
-In this section, we modeled the speed distribution. We model the cumulative status average speed distribution to get the cumulative probability distribution function, and then take a derivative with it to obtain the speed probability distribution.
-
-From figure. \ref{figure_speed_distribution}, the $\overline{speed}$ distribution shows exponential law. Given that, we define the function form as follows:
-
+To obtain the speed distribution of each status, we fit the cumulative average speed distribution to get the cumulative probability distribution function, and then take a derivative with it to obtain the speed probability distribution. From Fig.~\ref{figure_speed_distribution}, the $\overline{speed}$ distribution shows exponential law. Given that, we set the function form as follows:
 \begin{equation}\label{formular_ccdf_speed}
 \left\{
 \begin{array}{ll}
@@ -12,24 +9,21 @@ g(x) = 1-1/exp(a_2x^{2.5})
 \end{array}
 \right.
 \end{equation}
+Here, $f(x)$ is the function form for the $\overline{speed}$ distribution of vacant status, and the other one $g(x)$ is for that of occupied status. The \emph{root mean square} (rms) of residuals for each fit are reported in Table~\ref{table_rms}. The smaller rms of residuals means better fitting. In this table, the values are all less than $0.02$, showing good similarity.
 
-The fit formulas are given as formulas \ref{formular_ccdf_speed}. $f(x)$ is the function form for the $\overline{speed}$ distribution of vacant status, and $g(x)$ is for that of occupied status.
-
-\begin{table}[!h]
-\caption{The parameter and the rms of residuals of fitting curves}\label{table_rms}
+\begin{table}[!t]
+\caption{Parameters and rms of residuals of fitting curves}\label{table_rms}
 \centering
-\begin{tabular}{l|c|c}
+\begin{tabular}{c|c}
   \hline
-  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-  Categories & parameter & rms of residuals\\
+  Fitting curves & rms of residuals  \\
   \hline
-  $f(x)$ &$a_1=0.117$ &0.0113159\\
-  $g(x)$ &$a_2=0.0586$ &0.0137029\\
+  $f(x)$ with $a_1=0.117$ &0.0113159\\
+  \hline
+  $g(x)$ with $a_2=0.0586$ &0.0137029\\
   \hline
 \end{tabular}
 \end{table}
 
-The rms of residuals for each fit are as Table. \ref{table_rms}. The smaller rms of residuals means better fitting.
-In the table, the values are all less than 0.02, showing good similarity.
 
 

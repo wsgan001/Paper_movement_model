@@ -1,39 +1,12 @@
 \appendix
-\begin{algorithm}
-\caption{$enqueueNeighbor(CELL_{x,y})$}
-\begin{algorithmic}
-\IF{$CELL_{x,y}.events\geq \eta$ \AND $size<CLUSTERSCALE$ \AND $CELL_{x,y}\notin UsedCells$}
-\STATE $ClusterQueue.enqueue(CELL_{x,y})$
-\STATE　$CELL_{x,y}.region=REGIONSEED$
-\STATE $UsedCells.add(CELL_{x,y})$
-\STATE $size=size+1$
-\ENDIF
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}
-\caption{$enqueueNeighborOthers(CELL_{x,y})$}
-\begin{algorithmic}
-\IF{$size<CLUSTERSCALE$\AND $CELL_{x,y}\notin UsedCells$}
-\STATE $ClusterQueue.enqueue(CELL_{x,y})$
-\STATE　$CELL_{x,y}.region=REGIONSEED$\\
-\STATE $UsedCells.add(CELL_{x,y})$
-\STATE $size=size+1$
-\ENDIF
-\end{algorithmic}
-\end{algorithm}
 
 \begin{algorithm}\label{algorithm_connecting}
 \caption{Clustering}
 \begin{algorithmic}
-\REQUIRE
-$Cells=\{CELL\}$\\
-$\eta$ \#\#events threshold\\
-$CLUSTERSCALE$\\
-$REGIONSEED=200$\\
-$ClusterQueue=\varnothing$\\
-$UsedCells=\varnothing$\\
-\STATE Sort $Cells$ by events DESC\\
+\STATE \textbf{INPUTs:} $Cells=\{C_{x,y}\}$, the event threshold $\eta$, 
+$CLUSTERSCALE$, and $REGIONSEED=200$.\\
+\STATE $ClusterQueue=\varnothing$ \& $UsedCells=\varnothing$\\
+\STATE Sort $Cells$ by events in descending order\\
 \FOR{$CELL_{x,y}\in Cells$}
 \IF{$CELL_{x,y}\notin UsedCells$}
 \STATE　$CELL_{x,y}.region=REGIONSEED$\\
@@ -70,4 +43,26 @@ $UsedCells=\varnothing$\\
 
 
 
+\begin{algorithm}
+\caption{$enqueueNeighbor(CELL_{x,y})$}
+\begin{algorithmic}
+\IF{$CELL_{x,y}.events\geq \eta$ \AND $size<CLUSTERSCALE$ \AND $CELL_{x,y}\notin UsedCells$}
+\STATE $ClusterQueue.enqueue(CELL_{x,y})$
+\STATE　$CELL_{x,y}.region=REGIONSEED$
+\STATE $UsedCells.add(CELL_{x,y})$
+\STATE $size=size+1$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
 
+\begin{algorithm}
+\caption{$enqueueNeighborOthers(CELL_{x,y})$}
+\begin{algorithmic}
+\IF{$size<CLUSTERSCALE$\AND $CELL_{x,y}\notin UsedCells$}
+\STATE $ClusterQueue.enqueue(CELL_{x,y})$
+\STATE　$CELL_{x,y}.region=REGIONSEED$\\
+\STATE $UsedCells.add(CELL_{x,y})$
+\STATE $size=size+1$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}

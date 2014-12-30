@@ -1,8 +1,5 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: START.aux
-The style file: IEEEtran.bst
-Database file #1: vehicle_mobility_model.bib
--- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
--- http://www.michaelshell.org/tex/ieeetran/bibtex/
--- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-
-Done.
+I found no \citation commands---while reading file START.aux
+I found no \bibdata command---while reading file START.aux
+I found no \bibstyle command---while reading file START.aux
+(There were 3 error messages)

@@ -1,55 +1,40 @@
-\subsection{Region transition probability}
+\subsection{Region Transition Probability}
 
-A travel path of a taxi can be simplified as a multi-hop process, in which a hop indicates a load/drop event happened. Seeing that, we define a\emph{ region transition probability} to figure out the probability of the next hop falling in a different region $j$ from the current region $i$. Particularly, two successive events are different. Likewise, the region $i$ and $j$ are recognized by different metrics, that is, drop or load event distribution. It is more reasonable. For an instance, if the taxi is occupied, the next hop event is the drop one. Hence, choosing a target region from a region set divided by drop event distribution is more logical.
+A travel path of a taxi can be simplified as a multi-hop process, in which a hop indicates an load/drop event happened. Seeing that, we define a \emph{ region transition probability} to figure out the probability of the next hop falling in a certain region $R_j$ from the current region $R_i$. Particularly, when two successive events are different: one load and one drop. Therefore, the region $R_i$ and $R_j$ are recognized by different metrics, that is, drop or load event distribution. For an instance, if the taxi is currently occupied, then the next hop event is the drop one. Hence, choosing a target region from a region set obtained based on drop event distribution is more logical.
 %%每个分布开头一定要用&符号，其中\qquad 为大空格命令
 
-To calculate the region transition probability, the \textbf{region recognition process} should be executed in advance.
+Before defining the region transition probability, we first describe our \textbf{region recognition process}.
+Firstly, we divide the area into $100\times 100$ small grids, and define them as cells (as shown in the following equation) where $lon$ and $lat$ are relevant longitude and latitude, $len_x$ and $len_y$ are side length of the grid/cell). 
+\[C_{x,y}::=\{(lon,lat)|x \le \frac{{lon}}{{len_x}} < x + 1,
+y \le \frac{{lat}}{{len_y}} < y + 1\}.\]
+Then, we consider a region as a union of adjacent cells, as following.
+\[R_m:: = \{ C_{x,y}|\exists C_{i,j} \in R_m
+\Rightarrow \|x - i\| \le 1,\|y - j\| \le 1\}.\]
+The main idea of clustering cells to regions is to put adjacent cells with event density larger than an event threshold $\eta$ into a same region. To avoid the size of a region become too large or too small, we set a limitation on the size of a region, say $\|R_i\|\leq ClusterSize$, and also limit the number of final region is less than or equal to $200$. Thus, we only consider the top $200$ regions, in which $C_{x,y}.events\geq \eta$. After that, the other cells, who do not belong to the top 200 regions, will also be clustered into the $200$ regions, while $\|R_j\|\leq ClusterSize$. The overall clustering algorithm is simple. We sort the $100\times 100$ cells by event density in descending order, and begin with the first cell to search its neighbors whether to join the same region using breadth traversal. Consequently, every cells will be clustered into regions and the size of every region is not larger than $ClusterSize$. 
+By clustering cells into regions, two region sets, $\textbf{R}^{load}$ and $\textbf{R}^{drop}$, can be recognized from the data set. The region recognition results for load/drop events are shown in Fig.~\ref{figure_region_recognizition} for the Beijing taxi data set.
+In this figure, every colored block presents a region. In addition, $ClusterSize=200$, and $\eta=121$ for load event and $\eta=141$ for drop event ( these are set by the average event density of the top $5000$ cells order by its event density). You can see clearly differences among load region and drop-off regions.
 
-Firstly, we divide the area into $100\times 100$ grid, and define cells in it as equation \ref{cell}. Then, we consider region as adjacent cells as equation \ref{region}.
-
-\begin{equation}\label{cell}
-\begin{array}{c}
-CELL_{x,y}::=\{(lon,lat)|x \le \frac{{lon}}{{len_x}} < x + 1,\\
-y \le \frac{{lat}}{{len_y}} < y + 1\}
-\end{array}
-\end{equation}
-
-\begin{equation}\label{region}
-  \begin{array}{r}
-REGION_m:: = \{ CEL{L_{x,y}}|\exists CELL_{i,j} \in REGION_m\\
-\Rightarrow \|x - i\| \le 1,\|y - j\| \le 1\}
-\end{array}
-\end{equation}
-
-By clustering cells, two region sets, $\{REGION_m^{load}\}$ and $\{REGION_n^{drop}\}$, can be recognized. The main idea of clustering is to put adjacent cells with event density larger than the event threshold $\eta$ into the same region. To avoid the size of the region become too large or too small, we set a constant $CLUSTERSIZE$ to restrict a region, say $\|REGION_i\|\leq CLUSTERSIZE$ , and only limit the top 200 regions, in which $CELL_{x,y}.events\geq \eta$. After that, the other cells not belong to the top 200 regions, will also be classified into regions, while $\|REGION_j\|\leq CLUSTERSIZE$. Consequently, every cells will be classified into regions and the size of each region is not larger than $CLUSTERSIZE$.
-
-We sort the $100\times 100$ cells by event density in descending order, and begin with the first cell to search its neighbors to ask them whether to join the same region using breadth-first traversal.
-The region recognition results for load/drop events are shown in Fig. \ref{figure_region_recognizition}.
-
-In Fig. \ref{figure_region_recognizition}, every colored block presents a region. In addition, the $CLUSTERSIZE=200$, $\eta=121$ for on event and $\eta=141$ for drop event set by the average event density of the top 5000 cells order by its event density. The detailed clustering algorithm is presented in the appendix.
-
-\begin{figure}[!h]
+\begin{figure}[!t]
 \centering
-\subfigure[passenger drop event regions]{\includegraphics[width=0.2\textwidth]{figures_201103/region/Areas-2011_event0.eps}}
-\subfigure[passenger load event regions]{\includegraphics[width=0.2\textwidth]{figures_201103/region/Areas-2011_event1.eps}}
+\subfigure[drop event regions]{\includegraphics[width=0.23\textwidth]{figures_201103/region/Areas-2011_event0.eps}}
+\subfigure[load event regions]{\includegraphics[width=0.23\textwidth]{figures_201103/region/Areas-2011_event1.eps}}
 \centering
 \caption{Region recognition}\label{figure_region_recognizition}
 \end{figure}
 
-\textbf{The calculate process of the region transition probability:} After classifying cells into regions, the transition probability from $REGION_i^{load/drop}$ to $REGION_j^{drop/load}$, denoted as $p_{i\rightarrow j}^{load\rightarrow drop /drop\rightarrow load}$. To substatiate, the calculate process of $p_{i\rightarrow j}^{load\rightarrow drop}$ will be introduced in detail. The records in $REGION_i^{load}$ can be acquired from the data set easily. the record amount is denoted as $\|RECORDS_i^{load}=\{record|record.location\in{REGION_i^{load}\cap record.event=load}\}\|$. For $record \in RECORD_i^{load}$, the next event and location can be easily required. Therefore, the record can be associated with the its next hop information to $(taxiid, location_{current}, event,event_{next},location_{next})$. The $RECORDS_{i\to j}^{load\to drop}=\{record|event=load\cap event_{next}=drop\cap location_{current}\in REGION_i^{load}\cap location_{next}\in REGION_j^{drop}\}$ will be obtained.
+\textbf{Calculation of region transition probability}: After clustering cells into regions, the transition probability from $R_i^{load}$ to $R_j^{drop}$ and the one from $R_i^{drop}$ to $R_j^{load}$, donated as $p_{i\rightarrow j}^{load\rightarrow drop}$ and $p_{i\rightarrow j}^{drop\rightarrow load}$, can be caculated. Since both transition probability can be calculated similarly, we only introduce the detailed one of $p_{i\rightarrow j}^{load\rightarrow drop}$. 
 
-\begin{equation}\label{pij}
-p_{i \to j}^{load \to drop} = \frac{\|RECORDS_{i\to j}^{load\to drop}\|}{\|RECORDS_i^{load}\|}
-\end{equation}
+First, we count all records in $R_i^{load}$ from the data set,  i.e. $REC_i^{load}=\{r~|~r.location\in{R_i^{load} \textit{ and }  r.event=load}\}$. Let $\|REC_i^{load}\|$ be the amount of such records. For record $r \in REC_i^{load}$, the next event and location can be easily obtained from the data set. Thus, we can get the set of such records whose next event is drop and next location is $R_j^{drop}$, i.e., $REC_{i\to j}^{load\to drop}=\{r~|~r.event=load,~r.event_{next}=drop,~r.location_{current}\in R_i^{load}, \textit{ and }  r.location_{next}\in R_j^{drop}\}$. Let $\|REC_{i\to j}^{load\to drop}\|$ be the amount of such records. We can then easily obtain the transition probability from $R_i^{load}$ to $R_j^{drop}$, as follows,
+\[p_{i \to j}^{load \to drop} = \frac{\|REC_{i\to j}^{load\to drop}\|}{\|REC_i^{load}\|.}\]
 
 
-\begin{equation}\label{transition_matrix}
-  P^{load\to drop} = (p_{i\to j}^{load\to drop})_{m\times n}
-\end{equation}
+%\begin{equation}\label{transition_matrix}
+%  P^{load\to drop} = (p_{i\to j}^{load\to drop})_{m\times n}
+%\end{equation}
 
-\begin{equation}\label{transition_matrix}
-  P^{drop\to load} = (p_{i\to j}^{drop\to load})_{n\times m}
-\end{equation}
+%\begin{equation}\label{transition_matrix}
+%  P^{drop\to load} = (p_{i\to j}^{drop\to load})_{n\times m}
+%\end{equation}
 
 %%\begin{equation}\label{equation_taxiset_matrix}
 %\textbf{\emph{P^{on\to drop}}}=(p_{i\to j}^{load\to drop})_{m*n}\\

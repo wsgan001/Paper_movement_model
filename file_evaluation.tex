@@ -1,79 +1,81 @@
+\begin{figure*}[!t]
+\centering
+\subfigure[Real Trace]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/trace_real.eps}}
+\subfigure[START]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/trace_start.eps}}
+\subfigure[SP]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/trace_sp.eps}}
+\subfigure[RWP]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/trace_rwp.eps}}
+\caption{Trace samples.}\label{figure_tracesample}
+\end{figure*}
+\begin{figure*}[!t]
+\centering
+\subfigure[Real Trace]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/sample/tracesample.eps}}
+\subfigure[START]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/sample/startsample.eps}}
+\subfigure[SP]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/sample/spsample.eps}}
+\subfigure[RWP]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/sample/rwpsample.eps}}
+\caption{Trace snapshots.}\label{figure_trace_snapshots}
+\end{figure*}
+
 \section{Model Verification}
 \label{section_model_varification}
-In this section, STRAT mobility model is validated on the aspects of node distribution and contact characteristics. All mobility models are implemented on Opportunistic Networking Environment (ONE)\cite{KeranenOtt-155}.
+In this section, START mobility model is validated on the aspects of node distribution and contact characteristics compared with existing mobility models and the real traces. We pick two simple mobility models for comparison: one free space - Random Way Point (RWP) model, the other is constrained model, Shortest Path (SP).  SP mobility model is based on the underlying map of Beijing where vehicles move along the map roads by Dijkstra algorithm to random destinations. Both models take no consideration of the node statuses and geographical distributions. All mobility models are implemented on Opportunistic Networking Environment (ONE)\cite{KeranenOtt-155}.
 
-Shortest Path (SP) mobility model based on the map in Beijing is a model for comparison, which is implemented by ONE.  A node of SP also moves along the map roads based on Dijkstra algorithm.
-The RWP model is another comparison model, because it is proved to be an efficient model modeling the nodal movement in VANETs. But it takes no consideration of the node statuses and geographical distribution.
+In our simulations, $4,000$ vehicles are deployed in an area of $24,445\times 23,584 m^2$ (a sub-map of the whole area, including fourth ring roads in Beijing). The speed range of RWP and SP need to be configured. To ensure the accuracy, we choose three different speed ranges $[0,44.4]m/s$, $[0,33.3]m/s$ and $[0,22.2]m/s$ (the upper bounds of speed match the speed limits $80$,$120$,$160$ $km/h$. The simulation time is three hours and the warm up time for reports is one hour, so that the nodal movement and positions will not be affected by its initial position. The communication range between vehicles is set to $200m$ for potential contacts.
 
-The STRAT, SP and RWP mobility model are compared with the real trace.
-In simulations, Node number is set as 4000 and the scenario size is $24445\times23584 m^2$ (a sub-map of the whole area), including fourth ring roads in Beijing. The simulation time is three hours and the warm up time for reports is one hour, so that the nodal movement and position will not be affected by its initial position. The communication range is $200m$.
+\subsection{Traces and Node Distributions}
 
-\subsection{Traces and distribution of nodes}
+Trace samples and their snapshots from different mobility models are reported in Fig.~\ref{figure_tracesample} and Fig~\ref{figure_trace_snapshots}. Fig.~\ref{figure_tracesample} shows the trace in one day. The traces of the real data and START only cover some parts of the area, while the traces of SP and RWP almost go through the whole area. Recall that SP and RWP select a destination randomly in the area, while START takes the associations between current region and destinations into consideration (which satisfies the movement rules of taxis). In Fig.~\ref{figure_trace_snapshots}, real trace, START and SP exhibit the road structures, while the node distribution of RWP is much uniform. As to START, the destination section process decides that it tends to select a destination in the regions with higher load/drop event probability. Therefore, with the decline of the randomness, the snapshot of START becomes much clear and centralized on the main roads, which matches real traces very well.
 
-Trace samples and their snapshots are demonstrated in this section, shown in Fig. \ref{figure_tracesample} and Fig.\ref{figure_trace_snapshots}.
+%\begin{figure}[!h]
+%\centering
+%\hspace{0.in}
+%\subfigure[Real Trace]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/trace_real.eps}}
+%\hspace{0.0in}
+%\subfigure[START]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/trace_start.eps}}
+%\hspace{0.0in}
+%\subfigure[SP]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/trace_sp.eps}}
+%\hspace{0.in}
+%\subfigure[RWP]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/trace_rwp.eps}}
+%\caption{Trace samples}\label{figure_tracesample}
+%\end{figure}
 
-Fig.\ref{figure_tracesample} shows the trace in one day. The trace of the real data and STRAT only cover some part of the area, while the trace of SP and RWP almost go through the whole area. Because SP and RWP select destinations randomly, while STRAT takes the associations between current region and destinations into consideration based on the movement rules of taxis.
+%\begin{figure}[!h]
+%\centering
+%\subfigure[Real Trace]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/sample/tracesample.eps}}
+%\vspace{0.in}
+%\hspace{0.0in}
+%\subfigure[START]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/sample/startsample.eps}}
+%\vspace{0.in}
+%\hspace{0.0in}
+%\subfigure[SP]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/sample/spsample.eps}}
+%\vspace{0.in}
+%\hspace{0.0in}
+%\subfigure[RWP]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/sample/rwpsample.eps}}
+%\caption{Trace snapshots}\label{figure_trace_snapshots}
+%\end{figure}
 
-\begin{figure}[!h]
-\centering
-\hspace{0.in}
-\subfigure[Real Trace]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/trace_real.eps}}
-\hspace{0.0in}
-\subfigure[STRAT]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/trace_start.eps}}
-\hspace{0.0in}
-\subfigure[SP]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/trace_sp.eps}}
-\hspace{0.in}
-\subfigure[RWP]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/trace_rwp.eps}}
-\caption{Trace samples}\label{figure_tracesample}
-\end{figure}
+\subsection{Contacts Characteristics}
 
-From fig.\ref{figure_trace_snapshots}, Real trace STRAT and SP mobility model exhibit the road structure. However, the node distribution of RWP is much uniform.
-As to STRAT, the destination section process decides that it tends to select a destination in the regions with higher load/drop event probability.
-Therefore, with the decline of the randomness, the snapshot of STRAT become much clearer and more centralized on the main roads.
-\begin{figure}[H]
-\centering
-\subfigure[Real Trace]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/sample/tracesample.eps}}
-\vspace{0.in}
-\hspace{0.0in}
-\subfigure[STRAT]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/sample/startsample.eps}}
-\vspace{0.in}
-\hspace{0.0in}
-\subfigure[SP]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/sample/spsample.eps}}
-\vspace{0.in}
-\hspace{0.0in}
-\subfigure[RWP]{\includegraphics[width=0.23\textwidth]{figures_201103/Evaluation/sample/rwpsample.eps}}
-\caption{Trace snapshots}\label{figure_trace_snapshots}
-\end{figure}
-
-
-
-\subsection{Contacts characteristics}
-
-The contact time and inter contact time are evaluated as the indicators to validate the similarity. The speed range of RWP and SP need to be configured. To ensure the accuracy, we choose three speed range $[0,44.4]m/s$,$[0,33.3]m/s$ and $[0,22.2]m/s$, that is, the upper bounds of speed are 80,120,160 $km/h$.
-
-
-\begin{figure}[!h]
+\begin{figure}[!t]
 \centering
 \subfigure[cumulative contact time distribution]{
-\includegraphics[width=0.3\textwidth]{figures_201103/Evaluation/contact/ct_ccdf.eps}
+\includegraphics[width=0.35\textwidth]{figures_201103/Evaluation/contact/ct_ccdf.eps}
 }
 \subfigure[cumulative inter contact time distribution]{
-\includegraphics[width=0.3\textwidth]{figures_201103/Evaluation/contact/ict_ccdf.eps}
+\includegraphics[width=0.35\textwidth]{figures_201103/Evaluation/contact/ict_ccdf.eps}
 }
-\caption{Contact time, inter contact time distribution}\label{figure_contacts}
+\caption{Contact time, inter contact time distribution.}\label{figure_contacts}
 \end{figure}
-
-
-\begin{figure}[!h]
+\begin{figure}[!t]
 \centering
-\subfigure[time vs. total contact time]{\includegraphics[width=0.3\textwidth]{figures_201103/Evaluation/contact/tc.eps}}
-\subfigure[time vs. total contact time in logscale]{\includegraphics[width=0.3\textwidth]{figures_201103/Evaluation/contact/tc_logscale.eps}}
-\caption{time vs. total contact time}\label{figure_total_contact_time}
+\subfigure[time vs. total contact time]{\includegraphics[width=0.38\textwidth]{figures_201103/Evaluation/contact/tc.eps}}
+\subfigure[time vs. total contact time in logscale]{\includegraphics[width=0.38\textwidth]{figures_201103/Evaluation/contact/tc_logscale.eps}}
+\caption{Time vs. total contact time.}\label{figure_total_contact_time}
 \end{figure}
 
-Fig. \ref{figure_contacts}. (a)(b) is the contact time and inter-contact distribution, which shows the probability of the contact or inter-contact time smaller than certain time length. To substantiate, a point $(200,0.5)$ in these figures means the probability is 0.5 when contact or inter-contact time is shorter than $200s$. In addition, a point $(x,y)$ in \ref{figure_total_contact_time}.(a) means the sum of contact time is y when the simulation time is x. In this figure, the three green lines of SP and the three blue lines of RWP are coincide with each other. To recognize the differences, we set y axis as log-scale in fig.\ref{figure_total_contact_time}.(b).
-The curves of the total contact time vs. time presents a linear law. For SP and RWP, the differences of speed ranges show little influence on these curves.
-Clearly, the rank of the contact characteristic similarity with the real data is $STRAT>SP>RWP$.
+The contact time and inter contact time among vehicles are also evaluated as the indicators to validate the similarity. 
+Fig. \ref{figure_contacts} reports the contact time and inter-contact distributions, which shows the probability of the contact or inter-contact time smaller than certain time length. To substantiate, a point $(25,0.5)$ in the plots means the probability is $0.5$ when contact or inter-contact time is shorter than $25s$. Clearly, START matches the real traces best among three mobility models.
+Fig. \ref{figure_total_contact_time} also show the sum of contact time regarding to the simulation time. In Fig. \ref{figure_total_contact_time}(a), the three green lines of SP and the three blue lines of RWP are overlapping with each other. To recognize the differences, we set y axis as log-scale in Fig.~\ref{figure_total_contact_time}(b). The curves of the total contact time vs. time present a liner law. For SP and RWP, the differences of speed ranges show little influence on these curves.
+Clearly, the rank of the contact characteristic similarity with the real data is START $>$ SP $>$ RWP.
 
-To conclude, by comparing the node distribution and contact characteristics, the STRAT mobility model performs good similarity with the real data. The evaluation results conform to our expectations. Because $STRAT$ takes use of speed and geographic features related to status, however SP employs the map information and RWP is a random model taking use of no realistic data.
+To conclude, by comparing the node distribution and contact characteristics, the evaluation results confirm that START mobility model achieves great similarities with the real data. START takes the usage of speed and geographic features related with taxi status, while SP employs the map information and RWP is a random model taking use of no realistic data.
 
