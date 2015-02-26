@@ -19,7 +19,12 @@
 \label{section_model_varification}
 In this section, START mobility model is validated on the aspects of node distribution and contact characteristics compared with existing mobility models and the real traces. We pick two simple mobility models for comparison: one free space - Random Way Point (RWP) model, the other is constrained model, Shortest Path (SP).  SP mobility model is based on the underlying map of Beijing where vehicles move along the map roads by Dijkstra algorithm to random destinations. Both models take no consideration of the node statuses and geographical distributions. All mobility models are implemented on Opportunistic Networking Environment (ONE)\cite{KeranenOtt-155}.
 
-In our simulations, $4,000$ vehicles are deployed in an area of $24,445\times 23,584 m^2$ (a sub-map of the whole area, including fourth ring roads in Beijing). The speed range of RWP and SP need to be configured. To ensure the accuracy, we choose three different speed ranges $[0,44.4]m/s$, $[0,33.3]m/s$ and $[0,22.2]m/s$ (the upper bounds of speed match the speed limits $80$,$120$,$160$ $km/h$. The simulation time is three hours and the warm up time for reports is one hour, so that the nodal movement and positions will not be affected by its initial position. The communication range between vehicles is set to $200m$ for potential contacts.
+In our simulations, $4,000$ vehicles are deployed in an area of $24,445\times 23,584 m^2$ (a sub-map of the whole area, including fourth ring roads in Beijing). The speed range of RWP and SP need to be configured.
+To ensure the accuracy, we choose three different speed ranges $[0,44.4]m/s$, $[0,33.3]m/s$ and $[0,22.2]m/s$ (the upper bounds of speed match the speed limits $80$,$120$,$160$ $km/h$. 
+The simulation time is one hours.
+In order to evaluate contact characteristics, we should define the transmit ranges.
+In our simulations, the transmit ranges of high-speed interfaces and blue tooth interface are both set to $200m$ for potential contacts.
+All other settings are left at their default values.
 
 \subsection{Traces and Node Distributions}
 
