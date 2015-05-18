@@ -33,18 +33,3 @@ In this figure, every colored block presents a region.In addition, Cluster Size 
 
 First, we count all records in $R_i^{load}$ from the data set,  i.e. $REC_i^{load}=\{r~|~r.location\in{R_i^{load} \textit{ and }  r.event=load}\}$. Let $\|REC_i^{load}\|$ be the amount of such records. For record $r \in REC_i^{load}$, the next event and location can be easily obtained from the data set. Thus, we can get the set of such records whose next event is drop and next location is $R_j^{drop}$, i.e., $REC_{i\to j}^{load\to drop}=\{r~|~r.event=load,~r.event_{next}=drop,~r.location_{current}\in R_i^{load}, \textit{ and }  r.location_{next}\in R_j^{drop}\}$. Let $\|REC_{i\to j}^{load\to drop}\|$ be the amount of such records. We can then easily obtain the transition probability from $R_i^{load}$ to $R_j^{drop}$, as follows,
 \[p_{i \to j}^{load \to drop} = \frac{\|REC_{i\to j}^{load\to drop}\|}{\|REC_i^{load}\|.}\]
-
-
-%\begin{equation}\label{transition_matrix}
-%  P^{load\to drop} = (p_{i\to j}^{load\to drop})_{m\times n}
-%\end{equation}
-
-%\begin{equation}\label{transition_matrix}
-%  P^{drop\to load} = (p_{i\to j}^{drop\to load})_{n\times m}
-%\end{equation}
-
-%%\begin{equation}\label{equation_taxiset_matrix}
-%\textbf{\emph{P^{on\to drop}}}=(p_{i\to j}^{load\to drop})_{m*n}\\
-%\textbf{\emph{P^{drop\to load}}}=(p_{i\to j}^{drop\to load})_{n*m}\\
-%\end{equatiload}
-
