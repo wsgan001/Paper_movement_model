@@ -1,7 +1,6 @@
 \subsection{Region Transition Probability}
 
 A travel path of a taxi can be simplified as a multi-hop process, in which a hop indicates an load/drop event happened. Seeing that, we define a \emph{ region transition probability} to figure out the probability of the next hop falling in a certain region $R_j$ from the current region $R_i$. Particularly, when two successive events are different: one load and one drop. Therefore, the region $R_i$ and $R_j$ are recognized by different metrics, that is, drop or load event distribution. For instance, if the taxi is currently occupied, then the next hop event is the drop one. Hence, choosing a target region from a region set obtained based on drop event distribution is more logical.
-%%Ã¿¸ö·Ö²¼¿ªÍ·Ò»¶¨ÒªÓÃ&·ûºÅ£¬ÆäÖÐ\qquad Îª´ó¿Õ¸ñÃüÁî
 
 Before defining the region transition probability, we first describe our \textbf{region recognition process}.
 Firstly, we divide the area into $100\times 100$ small grids, and define them as cells (as shown in the following equation) where $lon$ and $lat$ are relevant longitude and latitude, $len_x$ and $len_y$ are side length of the grid/cell).
@@ -33,3 +32,19 @@ In this figure, every colored block presents a region.In addition, Cluster Size 
 
 First, we count all records in $R_i^{load}$ from the data set,  i.e. $REC_i^{load}=\{r~|~r.location\in{R_i^{load} \textit{ and }  r.event=load}\}$. Let $\|REC_i^{load}\|$ be the amount of such records. For record $r \in REC_i^{load}$, the next event and location can be easily obtained from the data set. Thus, we can get the set of such records whose next event is drop and next location is $R_j^{drop}$, i.e., $REC_{i\to j}^{load\to drop}=\{r~|~r.event=load,~r.event_{next}=drop,~r.location_{current}\in R_i^{load}, \textit{ and }  r.location_{next}\in R_j^{drop}\}$. Let $\|REC_{i\to j}^{load\to drop}\|$ be the amount of such records. We can then easily obtain the transition probability from $R_i^{load}$ to $R_j^{drop}$, as follows,
 \[p_{i \to j}^{load \to drop} = \frac{\|REC_{i\to j}^{load\to drop}\|}{\|REC_i^{load}\|.}\]
+
+
+\begin{table}
+\caption{region recognization parameters}
+\centering
+\begin{tabular}{l|c|c|c|c}
+  \hline
+  Item & 0:00-8:59 &9:00-12:59&13:00-20:59 &21:00-23:59 \\
+  \hline
+  $\eta_{drop}$ & 556&84 &180 &51\\
+  $\eta_{load}$ & 58&84 &182 &51\\
+  $top$ & 200&200 &200 &200\\
+  clusterSize& 500&500 &500 &500\\
+  \hline
+\end{tabular}
+\end{table}
