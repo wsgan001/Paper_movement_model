@@ -1,3 +1,18 @@
+\section{Model Verification}
+\label{section_model_varification}
+In this section, START mobility model is validated on the aspects of node distribution and contact characteristics compared with existing mobility models and the real traces. We pick two simple mobility models for comparison: one free space - Random Way Point (RWP) model, the other is constrained model, Shortest Path (SP).  SP mobility model is based on the underlying map of Beijing where vehicles move along the map roads by Dijkstra algorithm to random destinations. Both models take no consideration of the node statuses and geographical distributions. All mobility models are implemented on Opportunistic Networking Environment (ONE)\cite{KeranenOtt-155}.
+
+In our simulations, vehicles are deployed in an area of $24,000\times 24,000 m^2$, including fourth ring roads in Beijing). The speed range of RWP and SP need to be configured.
+To ensure the accuracy, we choose three different speed ranges $[0,16.67]m/s$, $[0,33.3]m/s$ and $[0,22.2]m/s$ (the upper bounds of speed match the speed limits $80$,$120$,$60$ $km/h$. 
+
+To evaluate the time feather of START,  4 time ranges are chosen: in the morning from 6:00:00 to 7:59:59, at noon from 11:00:00 to 12:59:59, at afternoon from 17:00:00 to 18:59:59 and lat in the evening from 22:00:00 to 23:59:59. Accordingly, we extract the real traces at corresponding time period of 21st November 2011. Because the taxi quantity is much small in the morning, traces of 1000 taxies are extracted, while in other time period, 3000 taxies are set. 
+
+In order to evaluate contact characteristics, we should define the transmit ranges.
+In our simulations, the transmit ranges of high-speed interfaces and blue tooth interface are both set to $200m$ for potential contacts.
+All other settings are left at their default values.
+
+
+\subsection{Traces and Node Distributions}
 \begin{figure*}[!t]
 \centering
 \subfigure[Real Trace]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/trace_real.eps}}
@@ -15,21 +30,15 @@
 \caption{Trace snapshots.}\label{figure_trace_snapshots}
 \end{figure*}
 
-\section{Model Verification}
-\label{section_model_varification}
-In this section, START mobility model is validated on the aspects of node distribution and contact characteristics compared with existing mobility models and the real traces. We pick two simple mobility models for comparison: one free space - Random Way Point (RWP) model, the other is constrained model, Shortest Path (SP).  SP mobility model is based on the underlying map of Beijing where vehicles move along the map roads by Dijkstra algorithm to random destinations. Both models take no consideration of the node statuses and geographical distributions. All mobility models are implemented on Opportunistic Networking Environment (ONE)\cite{KeranenOtt-155}.
-
-In our simulations, $4,000$ vehicles are deployed in an area of $24,445\times 23,584 m^2$ (a sub-map of the whole area, including fourth ring roads in Beijing). The speed range of RWP and SP need to be configured.
-To ensure the accuracy, we choose three different speed ranges $[0,44.4]m/s$, $[0,33.3]m/s$ and $[0,22.2]m/s$ (the upper bounds of speed match the speed limits $80$,$120$,$160$ $km/h$. 
-The simulation time is one hours.
-In order to evaluate contact characteristics, we should define the transmit ranges.
-In our simulations, the transmit ranges of high-speed interfaces and blue tooth interface are both set to $200m$ for potential contacts.
-All other settings are left at their default values.
-
-
-\subsection{Traces and Node Distributions}
 
 Trace samples and their snapshots from different mobility models are reported in Fig.~\ref{figure_tracesample} and Fig~\ref{figure_trace_snapshots}. Fig.~\ref{figure_tracesample} shows the trace in one day. The traces of the real data and START only cover some parts of the area, while the traces of SP and RWP almost go through the whole area. Recall that SP and RWP select a destination randomly in the area, while START takes the associations between current region and destinations into consideration (which satisfies the movement rules of taxis). In Fig.~\ref{figure_trace_snapshots}, real trace, START and SP exhibit the road structures, while the node distribution of RWP is much uniform. As to START, the destination section process decides that it tends to select a destination in the regions with higher load/drop event probability. Therefore, with the decline of the randomness, the snapshot of START becomes much clear and centralized on the main roads, which matches real traces very well.
+
+Since the node distribution has a great impact on the transport and network performance, a good understanding of it can help to route and control.  However, nodes are dynamic leading to a dynamic node distribution. In order to quantified the changing node distribution,  we introduce the in/out degree. The in/out degree figures out how many taxies moving in or out from a region in a time period. 
+We divide the simulation scenario into grids of $ 400\times 400 m^2$ to investigate the in/out degree for two hours. 
+
+Firstly, we compare the in/out degrees of different days at same time period. From figure XXX and XXX, we can find the relative error with their average in/out degree is less than XXX. This suggests     that the in/out degree for multiple days are consistent and we can compare our START traces with it.
+
+Figure XXX demonstrates the in degree of START, SP, RWP and the average in degree distribution. The relative error of START compared with the average one is XXX, that of SP is XXX,  and RWP is XXX.
 
 
 \subsection{Contacts Characteristics}
