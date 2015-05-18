@@ -24,12 +24,12 @@
 \maketitle
 
 \begin{abstract}
-The mobility model in urban vehicular networks is one of the most important factors that impacts the evaluation of any vehicular networking protocols via simulations. However, to obtain a realistic mobility model in the dynamic urban environment is very challenging. Recently, several studies extract mobility models from large-scale real data sets (mostly taxi GPS data) without consideration of the statuses of taxi. In this paper, we discover two simple observations related to the taxi status via mining of real taxi traces: (1) the behavior of taxi will be influenced by the statuses, and (2) the macroscopic movement is related with different geographic features in corresponding status. Based on these two observations, a novel taxi mobility model (START) is proposed with respect to taxi status and geographic region. The simulation results illustrate that proposed mobility model has a good approximation with reality in trace samples, distribution of nodes and the contact characteristics.
+The mobility model in urban vehicular networks is one of the most important factors that impacts the evaluation of any vehicular networking protocols via simulations. However, to obtain a realistic mobility model in the dynamic urban environment is very challenging. Recently, several studies extract mobility models from large-scale real data sets (mostly taxi GPS data) without consideration of the statuses of taxi. In this paper, we discover two simple observations related to the taxi status via mining of real taxi traces: (1) the behavior of taxi will be influenced by the statuses, (2) the macroscopic movement is related with different geographic features in corresponding status, and  (3) the taxi load/drop events are varied with time. Based on these two observations, a novel taxi mobility model (START) is proposed with respect to taxi status and geographic region. The simulation results illustrate that proposed mobility model has a good approximation with reality in trace samples, distribution of nodes and the contact characteristics  In different time periods.
 \end{abstract}
 
 \input{file_introduction}
 
-%\input{file_related_works}
+\input{file_related_works}
 
 \section{Statistical Analysis of Beijing Taxi Traces}
 \label{section_assumptions_anlysis}
@@ -38,7 +38,7 @@ In this section, we focus on the statistical analysis on the speed, duration, an
 
 \input{file_trace_dataset}
 
-\subsection{Two Claims on Taxi Behaviors}
+\subsection{Three Claims on Taxi Behaviors}
 \label{section_statistic_analysis}
 
 The following two claims are foundations of the proposed taxi mobility model, which are also reasonable based on the experience in our daily life:
@@ -50,13 +50,14 @@ The following two claims are foundations of the proposed taxi mobility model, wh
         \item The destination selection of a taxi is influenced by different regions.
         \item Events occur in different regions un-evenly, passenger drop and load events are distinct.
       \end{enumerate}
+ \item \textbf{Claim 3:} The taxi behavior associates with time. The quantities of load/drop events may vary with time comforming to certain rules. For example, the quantity of passengers late in the night is relatively fewer than that of passengers during the daytime. 
 \end{itemize}
 Next, we analyze the speed, duration and passenger load/drop events distribution over the Beijing taxi traces to validate the two claims above.
 
 \input{file_speed_statics}
 \input{file_lasting_time_for_each_status}
 \input{file_taxi_density_distribution}
-
+\input{file_time_event_distribution}
 \section{START Mobility Model}
 \label{section_modeling}
 

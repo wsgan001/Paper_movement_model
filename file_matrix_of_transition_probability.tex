@@ -1,7 +1,7 @@
 \subsection{Region Transition Probability}
 
 A travel path of a taxi can be simplified as a multi-hop process, in which a hop indicates an load/drop event happened. Seeing that, we define a \emph{ region transition probability} to figure out the probability of the next hop falling in a certain region $R_j$ from the current region $R_i$. Particularly, when two successive events are different: one load and one drop. Therefore, the region $R_i$ and $R_j$ are recognized by different metrics, that is, drop or load event distribution. For instance, if the taxi is currently occupied, then the next hop event is the drop one. Hence, choosing a target region from a region set obtained based on drop event distribution is more logical.
-%%每个分布开头一定要用&符号，其中\qquad 为大空格命令
+%%脙驴赂枚路脰虏录驴陋脥路脪禄露篓脪陋脫脙&路没潞脜拢卢脝盲脰脨\qquad 脦陋麓贸驴脮赂帽脙眉脕卯
 
 Before defining the region transition probability, we first describe our \textbf{region recognition process}.
 Firstly, we divide the area into $100\times 100$ small grids, and define them as cells (as shown in the following equation) where $lon$ and $lat$ are relevant longitude and latitude, $len_x$ and $len_y$ are side length of the grid/cell).
