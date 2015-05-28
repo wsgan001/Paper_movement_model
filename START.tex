@@ -45,15 +45,21 @@ In this section, we focus on the statistical analysis on the speed, duration, an
 The following two claims are foundations of the proposed taxi mobility model, which are also reasonable based on the experience in our daily life:
 \begin{itemize}
   \item \textbf{Claim 1:} The behavior of a taxi changes when its status updates. When a taxi is occupied, its destination is certain, and the vehicular speed of a occupied taxi accelerates relatively. In contrast, when a taxi is vacant, it slows down or even stops to search for potential passengers along the road. Therefore, taxi behavior characteristics, such as speed and status duration, vary consequently.
+ \item \textbf{Claim 2:} The taxi behavior associates with time. The quantities of load/drop events may vary with time comforming to certain rules. For example, the quantity of passengers late in the night is relatively fewer than that of passengers during the daytime. 
+      \begin{enumerate}
+%如何随时间变化， 相同时间段类似
+%不同时间段变化
+        \item The hotspots of load/drop events vary with time.
+        \item For the same time period during a day, the load/drop events distribute similar.
+      \end{enumerate}
 
-  \item \textbf{Claim 2:} The movement behavior of taxis associates with geographic features. When a taxi is occupied, the destination may be tend to certain geographic places, such as the airport. Meanwhile, when a taxi is vacant, its driver tends to look for some hot spots, where more people want to take a taxi, such as downtown areas. Therefore,
+  \item \textbf{Claim 3:} The movement behavior of taxis associates with geographic features. When a taxi is occupied, the destination may be tend to certain geographic places, such as the airport. Meanwhile, when a taxi is vacant, its driver tends to look for some hot spots, where more people want to take a taxi, such as downtown areas. Therefore,
       \begin{enumerate}
         \item The destination selection of a taxi is influenced by different regions.
         \item Events occur in different regions un-evenly, passenger drop and load events are distinct.
       \end{enumerate}
- \item \textbf{Claim 3:} The taxi behavior associates with time. The quantities of load/drop events may vary with time comforming to certain rules. For example, the quantity of passengers late in the night is relatively fewer than that of passengers during the daytime. 
 \end{itemize}
-Next, we analyze the speed, duration and passenger load/drop events distribution over the Beijing taxi traces to validate the two claims above.
+Next, we analyze the speed, duration and passenger load/drop events distribution over the Beijing taxi traces to validate the three claims above.
 
 \input{file_speed_statics}
 \input{file_lasting_time_for_each_status}
