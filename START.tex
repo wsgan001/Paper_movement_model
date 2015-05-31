@@ -13,6 +13,7 @@
 \usepackage{stfloats}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{multirow}
 \begin{document}
 
 \title{START: Status and Region Aware Taxi Mobility Model for Urban Vehicular Networks}
@@ -83,6 +84,8 @@ Next, we analyze the speed, duration and passenger load/drop events distribution
 Since the mobility model is important for vehicular networks and other smart cities applications, a new mobility model START based on real taxi GPS data is proposed. By assuming the taxi behavior is related with its statuses and geographic features, statistical experiments are conducted to verify those assumptions using the real trace data. With carefully estimations of the average speed distribution of each status and the region transition probability between drop and load event regions, START considers both macroscopic and microscopic movements. For the macroscopic movements, a node moves and switches between load-event regions and drop-event regions. Then the microscopic movements (such as speeds for each status) can be applied. START is implemented and evaluated in ONE simulator by comparing with the real trace, RWP and SP mobility models.
 For both node distribution and contact features, START shows better performance than the other two mobility models. This demonstrates that START has a good approximation with reality and can be used for urban vehicular network research and applications.
 
+
+\input{file_clustering}
 
 %\bibliographystyle{IEEEtran}
 %\bibliography{vehicle_mobility_model}

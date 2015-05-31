@@ -4,19 +4,19 @@
 \caption{Clustering}
 \begin{algorithmic}
 \STATE \textbf{INPUTs:} $Cells=\{C_{x,y}\}$, the event threshold $\eta$, 
-$CLUSTERSCALE$, and $REGIONSEED=200$.\\
+$CLUSTERSCALE$, and $REGION\_ID\_SEED=1$.\\
 \STATE $ClusterQueue=\varnothing$ \& $UsedCells=\varnothing$\\
 \STATE Sort $Cells$ by events in descending order\\
 \FOR{$CELL_{x,y}\in Cells$}
 \IF{$CELL_{x,y}\notin UsedCells$}
-\STATE¡¡$CELL_{x,y}.region=REGIONSEED$\\
+\STATEÂ¡Â¡$CELL_{x,y}.region=REGION\_ID\_SEED$\\
 \STATE  $size=1$\\
-\STATE  $CLUSTERSEED=CLUSTERSEED-1$\\
+\STATE  $REGION\_ID\_SEED=REGION_ID_SEED+1$\\
 \STATE $ClusterQueue.enqueue(CELL_{x,y})$
 \STATE $UsedCells.add(CELL_{x,y})$
 \WHILE{$ClusterQueue \neq \varnothing$}
 \STATE $CELL_{x,y}=ClusterQueue.dequeue()$
-\IF{$REGIONSEED\geq0$ \AND $CELL_{x,y}.events\geq\eta$}
+\IF{$REGION\_ID\_SEED\leq\_top$ \AND $CELL_{x,y}.events\geq\eta$}
 \STATE $enqueueNeighbor(CELL_{x-1,y})$
 \STATE $enqueueNeighbor(CELL_{x-1,y-1})$
 \STATE $enqueueNeighbor(CELL_{x-1,y+1})$
@@ -46,9 +46,9 @@ $CLUSTERSCALE$, and $REGIONSEED=200$.\\
 \begin{algorithm}
 \caption{$enqueueNeighbor(CELL_{x,y})$}
 \begin{algorithmic}
-\IF{$CELL_{x,y}.events\geq \eta$ \AND $size<CLUSTERSCALE$ \AND $CELL_{x,y}\notin UsedCells$}
+\IF{$CELL_{x,y}.events\geq \eta$ \AND $size<clusterSize$ \AND $CELL_{x,y}\notin UsedCells$}
 \STATE $ClusterQueue.enqueue(CELL_{x,y})$
-\STATE¡¡$CELL_{x,y}.region=REGIONSEED$
+\STATEÂ¡Â¡$CELL_{x,y}.region=REGION\_ID\_SEED$
 \STATE $UsedCells.add(CELL_{x,y})$
 \STATE $size=size+1$
 \ENDIF
@@ -60,7 +60,7 @@ $CLUSTERSCALE$, and $REGIONSEED=200$.\\
 \begin{algorithmic}
 \IF{$size<CLUSTERSCALE$\AND $CELL_{x,y}\notin UsedCells$}
 \STATE $ClusterQueue.enqueue(CELL_{x,y})$
-\STATE¡¡$CELL_{x,y}.region=REGIONSEED$\\
+\STATEÂ¡Â¡$CELL_{x,y}.region=REGION\_ID\_SEED$\\
 \STATE $UsedCells.add(CELL_{x,y})$
 \STATE $size=size+1$
 \ENDIF

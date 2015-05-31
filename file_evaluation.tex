@@ -1,12 +1,44 @@
 \section{Model Verification}
 \label{section_model_varification}
+
+\begin{table*}[!t]
+\caption{Simulation Parameter}
+\centering
+\begin{tabular}{r|c|c|c|c}
+\hline
+type & Trace & START & SP & RWP \\
+\hline
+mobility model & External & START & ShortestPathMapBased & RandomWaypoint\\
+\hline
+simulation time (sec) & \multicolumn{4}{c}{7200}\\ 
+\hline
+node scale &\multicolumn{4}{c}{1000/3000}\\
+\hline
+contact range (meter) & \multicolumn{4}{c}{200} \\
+\hline
+\multirow{3}{2.5cm}{speed range (m/s)} &\multirow{3}{1cm}{-}&\multirow{3}{1cm}{-}& \multicolumn{2}{c}{[0,16.67],} \\
+ & & & \multicolumn{2}{c}{[0,22.22]} \\
+ & & & \multicolumn{2}{c}{[0,33.33]} \\
+\hline
+\multirow{4}{1.5cm}{external file} & traces of 1000 nodes from 6:00 to 8:00 in Nov.8th,2011  &\multirow{4}{1cm}{-} &\multirow{4}{1cm}{-} &\multirow{4}{1cm}{-} \\
+ &traces of 3000 nodes from 11:00 to 13:00 in Nov.8th,2011& & & \\
+ &traces of 3000 nodes from 17:00 to 19:00 in Nov.8th,2011& & & \\
+ &traces of 3000 nodes from 22:00 to 24:00 in Nov.8th,2011& & & \\
+\hline
+map file &-&\multicolumn{2}{c|}{Beijing Map}&- \\
+\hline
+\end{tabular}\label{table_simulation_parameters}
+\end{table*}
+
 In this section, START mobility model is validated on the aspects of node distribution and contact characteristics compared with existing mobility models and the real traces. We pick two simple mobility models for comparison: one free space - Random Way Point (RWP) model, the other is constrained model, Shortest Path (SP).  SP mobility model is based on the underlying map of Beijing where vehicles move along the map roads by Dijkstra algorithm to random destinations. Both models take no consideration of the node statuses and geographical distributions. All mobility models are implemented on Opportunistic Networking Environment (ONE)\cite{KeranenOtt-155}.
 
-In our simulations, vehicles are deployed in an area of $24,000\times 24,000 m^2$, including fourth ring roads in Beijing). The speed range of RWP and SP need to be configured.
-To ensure the accuracy, we choose three different speed ranges $[0,16.67]m/s$, $[0,33.3]m/s$ and $[0,22.2]m/s$ (the upper bounds of speed match the speed limits $80$,$120$,$60$ $km/h$. 
+In our simulations, vehicles are deployed in an area of $24,000\times 24,000 m^2$, including fourth ring roads in Beijing. The speed range of RWP and SP need to be configured.
+To ensure the accuracy, we choose three different speed ranges $[0,16.67]m/s$, $[0,33.3]m/s$ and $[0,22.2]m/s$ (the upper bounds of speed match the speed limits $80$,$120$,$60$ $km/h$. The parameters for the simulations are shown as\ref{table_simulation_parameters}.
 %%may be in the morning should be changed
-To evaluate the time feature of START, 4 time periods are chosen: in the morning from 6:00:00 to 7:59:59, at noon from 11:00:00 to 12:59:59, at afternoon from 17:00:00 to 18:59:59 and lat in the evening from 22:00:00 to 23:59:59. Accordingly, we extract the real traces at corresponding time period of 21st November 2011. Because the taxi quantity is much small in the morning, traces of 1000 taxies are extracted, while for the other three time period, traces of 3000 taxies are randomly selected. 
+To evaluate the time feature of START, 4 time periods are chosen: in the morning from 6:00:00 to 7:59:59, at noon from 11:00 to 13:00, at afternoon from 17:00 to 19:00 and lat in the evening from 22:00 to 24:00. Accordingly, we extract the real traces at corresponding time period of 21st November 2011. Because the taxi quantity is much small in the morning, traces of 1000 taxies are extracted, while for the other three time period, traces of 3000 taxies are randomly selected. 
 
+
+\subsection{Traces and Node Distributions}
 
 \begin{figure*}[!t]
 \centering
@@ -17,8 +49,6 @@ To evaluate the time feature of START, 4 time periods are chosen: in the morning
 \caption{Trace samples.}\label{figure_tracesample}
 \end{figure*}
 
-
-\subsection{Traces and Node Distributions}
 \begin{figure*}[!t]
 \centering
 \subfigure[Real Trace]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/trace_nodedis.eps}}
@@ -31,50 +61,54 @@ To evaluate the time feature of START, 4 time periods are chosen: in the morning
 Trace samples and their node distribution snapshots from different mobility models are reported in Fig.~\ref{figure_tracesample} and Fig~\ref{figure_trace_snapshots}. Fig.~\ref{figure_tracesample} shows the trace in one day. The traces of the real data and START only cover some parts of the area, while the traces of SP and RWP almost go through the whole area. Recall that SP and RWP select a destination randomly in the area, while START takes the associations between current region and destinations into consideration (which satisfies the movement rules of taxis). In Fig.~\ref{figure_trace_snapshots}, real trace, START and SP exhibit the road structures, while the node distribution of RWP is much uniform. As to START, the destination section process decides that it tends to select a destination in the regions with higher load/drop event probability. Therefore, with the decline of the randomness, the snapshot of START becomes much clear and centralized on the main roads, which matches real traces very well.
 
 Since the node distribution has a great impact on the transport and network performance, a good understanding of it can help to route and control.  However, nodes are dynamic leading to a dynamic node distribution. In order to quantify the changing node distribution,  we introduce the in/out degree. The in/out degree figures out how many taxies moving in or out from a region in a time period. In/out degree defines how many nodes moveing in or out a area during a period of time. 
-We divide the simulation scenario into grids of $ 400m \times 400 m$ to investigate the in/out degree, and the time period measured is two hours. 
+We divide the simulation scenario into grids of $ 400m \times 400 m$ to investigate the in/out degree, and the time period to measure the in/out degree is as two hours according to the simulation time. 
 
 Firstly, we compare the in/out degrees of different days at same time period. From figure XXX and XXX, we can find the relative error with their average in/out degree is less than XXX. This suggests     that the in/out degree for multiple days are consistent and we can compare our START traces with it.
 
 Figure XXX demonstrates the in degree of START, SP, RWP and the average in degree distribution. The relative error of START compared with the average one is XXX, that of SP is XXX,  and RWP is XXX.
 
 
-
 \subsection{Contacts Characteristics}
-In order to evaluate contact characteristics, we should define the transmit ranges.
-In our simulations, the transmit ranges of high-speed interfaces and blue tooth interface are both set to $200m$ for potential contacts.
-All other settings are left at their default values.
+
+\begin{figure*}[!t]
+\centering
+\subfigure[1000 nodes from 6:00 to 8:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ct1000_6.eps}}
+\subfigure[3000 nodes from 11:00 to 13:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ct3000_11.eps}}
+\subfigure[3000 nodes from 17:00 to 19:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ct3000_17.eps}}
+\subfigure[3000 nodes from 22:00 to 24:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ct3000_22.eps}}
+\caption{Contact times distribution}\label{figure_contact_ct}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\subfigure[1000 nodes from 6:00 to 8:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ict1000_6.eps}}
+\subfigure[3000 nodes from 11:00 to 13:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ict3000_11.eps}}
+\subfigure[3000 nodes from 17:00 to 19:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ict3000_17.eps}}
+\subfigure[3000 nodes from 22:00 to 24:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ict3000_22.eps}}
+\caption{Inter-contact times distribution }\label{figure_contact_ict}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\subfigure[1000 nodes from 6:00 to 8:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/tc1000_6.eps}}
+\subfigure[3000 nodes from 11:00 to 13:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/tc3000_11.eps}}
+\subfigure[3000 nodes from 17:00 to 19:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/tc3000_17.eps}}
+\subfigure[3000 nodes from 22:00 to 24:00]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/tc3000_22.eps}}
+\caption{Time vs. total contact time.}\label{figure_contact_ct}
+\end{figure*}
+Contact defines an opportunity to communicate, a contact range should be assigned to quantify the max distance we consider two nodes contact with each other. 
+In our simulations, the transmit ranges of high-speed interfaces and blue tooth interface are both set to $200m$ for potential contacts. 
 
 The contact time and inter contact time among vehicles are also evaluated as the indicators to validate the similarity.
-Fig. \ref{figure_contacts} reports the contact time and inter-contact distributions, which shows the probability of the contact or inter-contact time smaller than certain time length. To substantiate, a point $(25,0.5)$ in the plots means the probability is $0.5$ when contact or inter-contact time is shorter than $25s$. Clearly, START matches the real traces best among three mobility models.
-Fig. \ref{figure_total_contact_time} also show the sum of contact time regarding to the simulation time.
-In Fig. \ref{figure_total_contact_time}(a), the three green lines of SP and the three blue lines of RWP are overlapping with each other.
-To recognize the differences, we set y axis as log-scale and set range on x-axis from 0 to 1500 in Fig.~\ref{figure_total_contact_time}(b). The curves of the total contact time vs. time present a liner law. For SP and RWP, the differences of speed ranges show little influence on these curves.
-Clearly, the rank of the contact characteristic similarity with the real data is START $>$ SP $>$ RWP.
+Fig. \ref{figure_contact_ct} and fig. \ref{figure_contact_ict} reports the contact time and inter-contact distributions, which shows the probability of the contact or inter-contact time smaller than certain time length. To substantiate, a point $(25,0.5)$ in the plots means the probability is $0.5$ when contact or inter-contact time is shorter than $25s$. 
+%Clearly, START matches the real traces best among three mobility models.
+From fig. \ref{figure_contact_ct} the speed will effect the contact distribution of SP and RWP. The speed in a low speed range will makes the contact time distribution of SP and RWP approach that of real traces. For START, in the time from 17:00 to 19:00, the model matches with the real traces best. 
+Fig. \ref{figure_contact_ict} also show the sum of contact time regarding to the simulation time.
+For the inter contact time, the curves of SP (RWP) are close with each other, which means the speed range dose not make much difference on the inter contact time. Compared with the distribution of contact time, it may because that the inter contact time are much longer than the contact time, the inter contact time is more stable to present the performance of nodes. 
+In Fig. \ref{figure_total_contact_time}(a), the three purple lines of SP and the three blue lines of RWP are overlapping with each other, too.
+The curves of the total contact time vs. time present a liner law. 
+From the analysis above, for SP and RWP, the differences of speed ranges show little influence on these curves. 
+%Clearly, the rank of the contact characteristic similarity with the real data is START $>$ SP $>$ RWP. 
 
 To conclude, by comparing the node distribution and contact characteristics, the evaluation results confirm that START mobility model achieves great similarities with the real data. START takes the usage of speed and geographic features related with taxi status, while SP employs the map information and RWP is a random model taking use of no realistic data.
 
-
-\begin{figure*}[!t]
-\centering
-\subfigure[ct1000]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ct1000_6.eps}}
-\subfigure[ct3000 from 11 o'clock]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ct3000_11.eps}}
-\subfigure[ct3000 from 17 o'clock]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ct3000_17.eps}}
-\subfigure[ct3000 from 22 o'clock]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ct3000_22.eps}}
-\end{figure*}
-
-\begin{figure*}[!t]
-\centering
-\subfigure[ict from 5 o'clock]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ict1000_6.eps}}
-\subfigure[ict from 11 o'clock]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ict3000_11.eps}}
-\subfigure[ict from 17 o'clock]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ict3000_17.eps}}
-\subfigure[ict from 22 o'clock]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/ict3000_22.eps}}
-\end{figure*}
-
-\begin{figure*}[!t]
-\centering
-\subfigure[time vs. total contact time]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/tc1000_6.eps}}
-\subfigure[time vs. total contact time]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/tc3000_11.eps}}
-\subfigure[time vs. total contact time]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/tc3000_17.eps}}
-\subfigure[time vs. total contact time]{\includegraphics[width=0.24\textwidth]{figures_201103/Evaluation/contact/tc3000_22.eps}}
-\caption{Time vs. total contact time.}\label{figure_all}
-\end{figure*}

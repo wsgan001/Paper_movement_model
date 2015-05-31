@@ -37,6 +37,7 @@ After the top regions are formed, the other cells which do not belong to the top
 whose size should still be small than Cluster Size. Consequently, every cells will be clustered into regions and the size of each region are not larger than Cluster Size.
 By clustering cells into regions, two region sets, \textbf{$R^{load}$} and \textbf{$R^{drop}$}, can be recognized from the data set for every time period. As can be seen from Fig. \ref{figure_region_recognizition}, the differences among load region and drop regions for the Beijing taxi data set are clear.
 In this figure, every colored block presents a region.In addition, Cluster Size = 200, range t = 200 (range is the same with Cluster Size by coincidence) and threshold $\eta = 121$ are set for load event and $\eta$ equates with 141 for drop event (these are set by the average event density of the top 5000 cells order by its event density).
+
 \begin{figure}[!t]
 \centering
 \subfigure[drop event regions]{\includegraphics[width=0.23\textwidth]{figures_201103/region/Areas-2011_event0.eps}}
