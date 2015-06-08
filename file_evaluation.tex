@@ -34,10 +34,17 @@ In this section, START mobility model is validated on the aspects of node distri
 
 In our simulations, vehicles are deployed in an area of $24,000\times 24,000 m^2$, including fourth ring roads in Beijing. The speed range of RWP and SP need to be configured.
 To ensure the accuracy, we choose three different speed ranges $[0,16.67]m/s$, $[0,33.3]m/s$ and $[0,22.2]m/s$ (the upper bounds of speed match the speed limits $80$,$120$,$60$ $km/h$. The parameters for the simulations are shown as\ref{table_simulation_parameters}.
-%%may be in the morning should be changed
+
 To evaluate the time feature of START, 4 time periods are chosen: in the morning from 6:00:00 to 7:59:59, at noon from 11:00 to 13:00, at afternoon from 17:00 to 19:00 and lat in the evening from 22:00 to 24:00. Accordingly, we extract the real traces at corresponding time period of 21st November 2011. Because the taxi quantity is much small in the morning, traces of 1000 taxies are extracted, while for the other three time period, traces of 3000 taxies are randomly selected. 
 
+\begin{figure}
+\centering
+\epsfysize=2in\epsfbox{figures_201103/Evaluation/avg_time_speed.eps}
+\caption{average speed for different time period}
+\end{figure}
 
+
+The average speed for rwp and sp are set as $12.45 km/h$ for 6:00 to 8:00, $16.34km/h$ for 11:00 to 13:00, $13.38km/h$ for 17:00 to 19:00 and $13.59 km/h$ for 22:00 and 23:00.
 \subsection{Traces and Node Distributions}
 
 \begin{figure*}[!t]
@@ -62,29 +69,69 @@ Trace samples and their node distribution snapshots from different mobility mode
 
 Since the node distribution has a great impact on the transport and network performance, a good understanding of it can help to route and control.  However, nodes are dynamic leading to a dynamic node distribution. In order to quantify the changing node distribution,  we introduce the in/out degree. The in/out degree figures out how many taxies moving in or out from a region in a time period. In/out degree defines how many nodes moveing in or out a area during a period of time. 
 We divide the simulation scenario into grids of $ 400m \times 400 m$ to investigate the in/out degree, and the time period to measure the in/out degree is as two hours according to the simulation time. 
+The average in-degree is equal to the average of out-degree. Because if a node moves out from area A to area B, the in-degree of B adds on one, meanwhile, the out-degree of area A adds on one. The average in/out degree are shown as table \ref{table_avg_inoutdegree}, and the variance of in-degree and out-degree are shown as table \ref{table_variance_in} and \ref{table_variance_out}.
 
-Firstly, we compare the in/out degrees of different days at same time period. From figure XXX and XXX, we can find the relative error with their average in/out degree is less than XXX. This suggests     that the in/out degree for multiple days are consistent and we can compare our START traces with it.
+We find out that the when the speed range is from 0 to $16.67m/s$, the average in/out degree of RWP is most close to the real one, then is START. However, the variance of RWP at that speed range is far less than that of RWP. Figure\ref{figure_in_degree_rwp} demonstrates that the distribution of in-degree of RWP
+is quite even. On the opposite, the SP are with large variance.  Figure\ref{figure_in_degree_dis} illustrates the in-degree distribution of real traces, START and SP. It is reasonable to figure out the main road of Beijing from it, because more nodes go across the area including the main roads.
 
-Figure XXX demonstrates the in degree of START, SP, RWP and the average in degree distribution. The relative error of START compared with the average one is XXX, that of SP is XXX,  and RWP is XXX.
+From figure \ref{figure_relative_err} shows the relative error of START, SP and RWP compared with the real traces at according time.
+The relative error is calculated as:
+\begin{equation}
+    \delta = \frac{\sum \Delta x}{\sum x_{real}} 
+\end{equation}
+$\Delta x$ is the absolute value of the compare value minus the real one, and $x_real$ is the real value.
+The relative error of START is no more than 0.6, while, that of SP is more than 1.2,  and RWP is more than 0.8 for every time period. 
 \begin{table*}[!t]
-\caption{Average in/out degree.}
+\caption{Average in/out degree.}\label{table_avg_inoutdegree}
 \centering
 \begin{tabular}{r|c|c|c|c|c|c|c|c}
 \hline
 	&trace	&start	&rwp-16.67	&rwp-22.22	&rwp-33.33	&sp-16.67	&sp-22.22	&sp-33.33\\
 \hline
-6:00	&31.851667	&23.684444	&31.631667	&38.600556	&51.671389	&30.357222	&37.976667	&52.748611\\
+6:00-8:00(1000 nodes)	&31.85&23.68&31.63&38.60&51.67&30.35&37.976667	&52.74\\
 \hline
-11:00	&85.048333	&70.411389	&94.957500	&114.665278	&152.116389	&91.222500	&115.361111	&157.210278\\
+11:00-13:00(3000 nodes)	&85.04&70.41&94.95&114.66&152.12&91.22&115.36&157.21\\
 \hline
-17:00	&84.095556	&71.304444	&94.957500	&114.665278	&152.116389	&91.222500	&115.361111	&157.210278\\
+17:00-19:00(3000 nodes)	&84.09&71.30&94.95&114.66&152.12&91.22&115.36&157.21\\
 \hline
-22:00	&79.547778	&68.977778	&94.957500	&114.665278	&152.116389	&91.222500	&115.361111	&157.210278\\
+22:00-24:00(3000 nodes)	&79.54&68.98&94.95&114.66&152.12&91.22&115.36&157.21\\
+\hline
+\end{tabular}
+\end{table*}
+
+
+\begin{table*}[!t]
+\caption{Variance of the in-degree.}\label{table_variance_in}
+\centering
+\begin{tabular}{r|c|c|c|c|c|c|c|c}
+\hline
+	&trace	&start	&rwp-16.67	&rwp-22.22	&rwp-33.33	&sp-16.67	&sp-22.22	&sp-33.33\\
+\hline
+6:00-8:00(1000 nodes)&1667.36&948.45&398.70&583.10&991.18&4042.99&6369.22&12263.64\\
+\hline
+11:00-13:00(3000 nodes)	&12247.03&7212.91&3433.44&5057.05&8592.22&35743.59&58253.81&108822.29\\
+\hline
+17:00-19:00(3000 nodes)&10817.04&6860.84&3433.44&5057.05&8592.22&35743.59&58253.81&108822.29\\
+\hline
+22:00-24:00(3000 nodes)	&11157.84&5779.23&3433.44&5057.05&8592.22&35743.59&58253.81&108822.29\\
 \hline
 \end{tabular}
 \end{table*}
 %%计算方差
-
+\begin{table*}[!t]
+\caption{Variance of the out-degree.}\label{table_variance_out}
+\centering
+\begin{tabular}{r|c|c|c|c|c|c|c|c}
+\hline
+	&trace	&start	&rwp-16.67	&rwp-22.22	&rwp-33.33	&sp-16.67	&sp-22.22	&sp-33.33\\
+\hline
+ 6:00-8:00(1000 nodes)&1656.37&940.77&397.30&584.26&991.85&4026.37&6347.75&12226.22\\
+ 11:00-13:00(3000 nodes)&12257.01&7117.18&3442.76&5071.94&8616.81&35565.83&57967.57&108436.98\\
+ 17:00-19:00(3000 nodes)&10825.05&6793.90&3442.76&5071.94&8616.81&35565.83&57967.57&108436.98\\
+ 22:00-24:00(3000 nodes)&11200.26&5712.11&3442.76&5071.94&8616.81&35565.83&57967.57&108436.98\\
+\hline
+\end{tabular}
+\end{table*}
 
 \begin{figure*}[!t]
 \centering
@@ -92,7 +139,7 @@ Figure XXX demonstrates the in degree of START, SP, RWP and the average in degre
 \epsfysize=2in\epsfbox{figures_201103/Evaluation/indegree/rwp_16_1000.eps}&
 \epsfysize=2in\epsfbox{figures_201103/Evaluation/indegree/rwp_16_3000.eps} \\
 \end{tabular}
-\caption{The in degree of RWP}
+\caption{The in-degree of RWP}\label{figure_in_degree_rwp}
 \end{figure*}
 
 
@@ -118,10 +165,24 @@ Figure XXX demonstrates the in degree of START, SP, RWP and the average in degre
 \epsfysize=1.2in\epsfbox{figures_201103/Evaluation/indegree/start_22_3000.eps} &
 \epsfysize=1.2in\epsfbox{figures_201103/Evaluation/indegree/sp_16_3000.eps} \\
 (j) Real traces of 3000 nodes, 22:00-24:00 &(k) START:3000  nodes,22:00-24:00 &(l) SP:3000  nodes ,[0,16.67]$m/s$ \\ 
-
 \end{tabular}
+\caption{In-degree distribution}\label{figure_in_degree_dis}
 \end{figure*}
 
+
+\begin{figure*}[!t]
+\centering
+\begin{tabular}
+[c]{cc}
+\epsfysize=1.5in\epsfbox{figures_201103/Evaluation/indegree/relative_err_6.eps} &
+\epsfysize=1.5in\epsfbox{figures_201103/Evaluation/indegree/relative_err_6.eps}\\ 
+(a) compare to real traces from 6:00 to 8:00 & (b) from 11:00 to 13:00 \\
+\epsfysize=1.5in\epsfbox{figures_201103/Evaluation/indegree/relative_err_6.eps} & 
+\epsfysize=1.5in\epsfbox{figures_201103/Evaluation/indegree/relative_err_6.eps} \\
+(c) from 17:00-19:00 & (d) from 22:00 to 24:00 \\
+\end{tabular}
+\caption{Relative Error}\label{figure_relative_err}
+\end{figure*}
 
 \subsection{Contacts Characteristics}
 
