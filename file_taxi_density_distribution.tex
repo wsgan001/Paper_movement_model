@@ -1,22 +1,30 @@
 \subsection{Taxi Event Distribution}
 \label{section_taxi_denstiy_distribution}
 
-To validate \emph{Claim~2}, we quantitatively analyze vehicles density in one hour periods. By dividing the whole network into $100 \times 100$ grids, taxi density distributions for load and drop event are computed in each cell. Fig.~\ref{figure_taxi_density_for_one_hour} shows the load/drop events distributions in three time periods. In the morning one, people begin to get out from home, so the load-event distribution is more even than that of drop-event. This phenomenon may be caused by the load-event spots are mainly at homes of the citizens, while the drop-event spots tend to gather together at workplaces, railway stations or scenic spots. Besides, in the evening time period, the dispersion of load-event is of lower degree than that of drop-event, for people coming home at that time. Overall, the amount of loading/dropping passengers in each cell shows geographic features: the distribution is uneven, and the difference between load/drop-event distributions illustrates the load/drop-event regions are different. All of these support \emph{Claim 2}.
-
+%load and drop event have geographic features
+In this section, we try to find out whether the load and drop events distributes with geographical perference.
+Fig.~\ref{figure_taxi_density_for_one_hour} shows the load/drop events hotspots (more than 20 events happened in one hour) in same time periods, from 19:00 to 20:00. 
+We choose two workdays and a weekends. Comparing the load and drop event hotspots, we can find the events distribute much even for loading passengers.  
+ For each kind of events, some peaks occurs repeatly, as highlighted in the red circles. Through, the event amounts are different from the workdays and the weekend. The position of those hotspots are still similar. This phenomenon may be caused by the load-event spots are mainly at homes of the citizens, while the drop-event spots tend to gather together at workplaces, shopping malls, railway stations or scenic spots.
+Overall, the amount of loading/dropping passengers in each cell shows geographic features: the distribution is uneven, and the difference between load/drop-event distributions illustrates the load/drop-event regions are different. All of these support \emph{Claim 3}.
 
 
 \begin{figure*}[!t]
 \centering
 \begin{tabular}
-[c]{ccc}
-\epsfysize=0.9in\epsfbox{figures/events_dis/Graph4.eps} &
-\epsfysize=0.9in\epsfbox{figures/events_dis/Graph5.eps} &
-\epsfysize=0.9in\epsfbox{figures/events_dis/Graph6.eps} \\
-(a) $load,7:00-8:00$ & (b) $load,12:00-13:00$ & (c) $load,17:00-18:00$\\
-\epsfysize=0.9in\epsfbox{figures/events_dis/Graph1.eps} &
-\epsfysize=0.9in\epsfbox{figures/events_dis/Graph2.eps} &
-\epsfysize=0.9in\epsfbox{figures/events_dis/Graph3.eps} \\
-(d) $drop,7:00-8:00$ & (e) $drop,12:00-13:00$ & (f) $drop,17:00-18:00$
+[c]{cccc}
+\epsfysize=1.2in\epsfbox{figures/analysis/hotspots/1hotspot_20_drop_19.eps} &
+\epsfysize=1.2in\epsfbox{figures/analysis/hotspots/3hotspot_20_drop_19.eps} &
+\epsfysize=1.2in\epsfbox{figures/analysis/hotspots/5hotspot_20_drop_19.eps} &
+\epsfysize=1.2in\epsfbox{figures/analysis/hotspots/6hotspot_20_drop_19.eps} \\
+(a) Nov.1th, Tuesday &(b) Nov.3th, Thursday &(c) Nov.5th, Saturday &(d) Nov.6th, Sunday \\
+\multicolumn{4}{c}{hotspots of drop events }\\
+\epsfysize=1.2in\epsfbox{figures/analysis/hotspots/1hotspot_20_load_19.eps} & 
+\epsfysize=1.2in\epsfbox{figures/analysis/hotspots/3hotspot_20_load_19.eps} &
+\epsfysize=1.2in\epsfbox{figures/analysis/hotspots/5hotspot_20_load_19.eps} &
+\epsfysize=1.2in\epsfbox{figures/analysis/hotspots/6hotspot_20_load_19.eps} \\
+(e) Nov.1th, Tuesday &(f) Nov.3th, Thursday &(g) Nov.5th, Saturday &(h) Nov.6th, Sunday \\
+\multicolumn{4}{c}{hotspots of load events }\\
 \end{tabular}
 \caption{Taxi density for load/drop events in one hour.}\label{figure_taxi_density_for_one_hour}
 \end{figure*}

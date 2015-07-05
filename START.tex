@@ -1,6 +1,6 @@
 
 %\documentclass[camera-ready,twocolumn,10pt]{IEEEtran}
-\documentclass[10pt,conference,compsocconf,letterpaper]{IEEEtran}
+\documentclass[10pt,journal,compsocconf,letterpaper]{IEEEtran}
 \IEEEoverridecommandlockouts
 
 \usepackage{epsfig,endnotes}
@@ -13,9 +13,10 @@
 \usepackage{stfloats}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{multirow}
 \begin{document}
 
-\title{START: Status and Region Aware Taxi Mobility Model for Urban Vehicular Networks}
+\title{T-START: Time, Status and Region Aware Taxi Mobility Model for Urban Vehicular Networks}
 
 \author{\IEEEauthorblockN{Haiquan Wang\authorrefmark{1}\authorrefmark{2}, Wenjing Yang\authorrefmark{1}\authorrefmark{2}, Jingtao Zhang\authorrefmark{1}\authorrefmark{2}, Jiejie Zhao\authorrefmark{1}\authorrefmark{2}, Yu Wang\authorrefmark{3}\thanks{Yu Wang is the corresponding author (e-mail: yu.wang@uncc.edu).}\thanks{This research has been partially supported by the US National Science Foundation (NSF) under Grant No. CNS-1319915 and CNS-1343355, the National Natural Science Foundation of China (NSFC) under Grant No. 61300173, 61428203, and 61170295, the Project of Aeronautical Science Foundation of China under Grant No.2013ZC51026 and 2011ZC51024, the Fundamental Research Funds for the Central Universities under Grant No. YWF-12-LXGY-001, and the State Key Laboratory Software Development Environment and Network Information and Computing Center of Beihang University.}}
 \IEEEauthorblockA{\authorrefmark{1}School of Software, Beihang University, Beijing, China\\
@@ -24,7 +25,8 @@
 \maketitle
 
 \begin{abstract}
-The mobility model in urban vehicular networks is one of the most important factors that impacts the evaluation of any vehicular networking protocols via simulations. However, to obtain a realistic mobility model in the dynamic urban environment is very challenging. Recently, several studies extract mobility models from large-scale real data sets (mostly taxi GPS data) without consideration of the statuses of taxi. In this paper, we discover two simple observations related to the taxi status via mining of real taxi traces: (1) the behavior of taxi will be influenced by the statuses, (2) the macroscopic movement is related with different geographic features in corresponding status, and  (3) the taxi load/drop events are varied with time. Based on these two observations, a novel taxi mobility model (START) is proposed with respect to taxi status and geographic region. The simulation results illustrate that proposed mobility model has a good approximation with reality in trace samples, distribution of nodes and the contact characteristics  In different time periods.
+The mobility model in urban vehicular networks is one of the most important factors that impacts the evaluation of any vehicular networking protocols via simulations. However, to obtain a realistic mobility model in the dynamic urban environment is very challenging. Recently, several studies extract mobility models from large-scale real data sets (mostly taxi GPS data) without consideration of the statuses of taxi. In this paper, we discover three simple observations related to the taxi status via mining of real taxi traces: (1) the behavior of taxi will be influenced by the statuses, (2) the macroscopic movement is related with different geographic features in corresponding status, and (3) the taxi load/drop events are varied with time. 
+Based on these three observations, a novel taxi mobility model (T-START) is proposed with respect to taxi statuses, geographic region and time. The simulation results illustrate that proposed mobility model has a good approximation with reality in the contact characteristics, trace samples and distribution of nodes in four typical time period.
 \end{abstract}
 
 \input{file_introduction}
@@ -44,21 +46,27 @@ In this section, we focus on the statistical analysis on the speed, duration, an
 The following two claims are foundations of the proposed taxi mobility model, which are also reasonable based on the experience in our daily life:
 \begin{itemize}
   \item \textbf{Claim 1:} The behavior of a taxi changes when its status updates. When a taxi is occupied, its destination is certain, and the vehicular speed of a occupied taxi accelerates relatively. In contrast, when a taxi is vacant, it slows down or even stops to search for potential passengers along the road. Therefore, taxi behavior characteristics, such as speed and status duration, vary consequently.
+ \item \textbf{Claim 2:} The taxi behavior associates with time. The quantities of load/drop events may vary with time comforming to certain rules. For example, the quantity of passengers late in the night is relatively fewer than that of passengers during the daytime. 
+      \begin{enumerate}
+%如何随时间变化， 相同时间段类似
+%不同时间段变化
+        \item The hotspots of load/drop events vary with time.
+        \item For the same time period during a day, the load/drop events distribute similar.
+      \end{enumerate}
 
-  \item \textbf{Claim 2:} The movement behavior of taxis associates with geographic features. When a taxi is occupied, the destination may be tend to certain geographic places, such as the airport. Meanwhile, when a taxi is vacant, its driver tends to look for some hot spots, where more people want to take a taxi, such as downtown areas. Therefore,
+  \item \textbf{Claim 3:} The movement behavior of taxis associates with geographic features. When a taxi is occupied, the destination may be tend to certain geographic places, such as the airport. Meanwhile, when a taxi is vacant, its driver tends to look for some hot spots, where more people want to take a taxi, such as downtown areas. Therefore,
       \begin{enumerate}
         \item The destination selection of a taxi is influenced by different regions.
         \item Events occur in different regions un-evenly, passenger drop and load events are distinct.
       \end{enumerate}
- \item \textbf{Claim 3:} The taxi behavior associates with time. The quantities of load/drop events may vary with time comforming to certain rules. For example, the quantity of passengers late in the night is relatively fewer than that of passengers during the daytime. 
 \end{itemize}
-Next, we analyze the speed, duration and passenger load/drop events distribution over the Beijing taxi traces to validate the two claims above.
+Next, we analyze the speed, duration and passenger load/drop events distribution over the Beijing taxi traces to validate the three claims above.
 
 \input{file_speed_statics}
 \input{file_lasting_time_for_each_status}
-\input{file_taxi_density_distribution}
 \input{file_time_event_distribution}
-\section{START Mobility Model}
+\input{file_taxi_density_distribution}
+\section{T-START Mobility Model}
 \label{section_modeling}
 
 \input{file_model_design}
@@ -73,9 +81,11 @@ Next, we analyze the speed, duration and passenger load/drop events distribution
 
 \section{Conclusion}
 \label{section_conclusion}
-Since the mobility model is important for vehicular networks and other smart cities applications, a new mobility model START based on real taxi GPS data is proposed. By assuming the taxi behavior is related with its statuses and geographic features, statistical experiments are conducted to verify those assumptions using the real trace data. With carefully estimations of the average speed distribution of each status and the region transition probability between drop and load event regions, START considers both macroscopic and microscopic movements. For the macroscopic movements, a node moves and switches between load-event regions and drop-event regions. Then the microscopic movements (such as speeds for each status) can be applied. START is implemented and evaluated in ONE simulator by comparing with the real trace, RWP and SP mobility models.
-For both node distribution and contact features, START shows better performance than the other two mobility models. This demonstrates that START has a good approximation with reality and can be used for urban vehicular network research and applications.
+Since the mobility model is important for vehicular networks and other smart cities applications, a new mobility model T-START based on real taxi GPS data is proposed. By assuming the taxi behavior is related with its statuses and geographic features, statistical experiments are conducted to verify those assumptions using the real trace data. With carefully estimations of the average speed distribution of each status and the region transition probability between drop and load event regions, T-START considers both macroscopic and microscopic movements. For the macroscopic movements, a node moves and switches between load-event regions and drop-event regions. Then the microscopic movements (such as speeds for each status) can be applied. T-START is implemented and evaluated in ONE simulator by comparing with the real trace, RWP and SP mobility models.
+For both node distribution and contact features, T-START shows better performance than the other two mobility models. This demonstrates that T-START has a good approximation with reality and can be used for urban vehicular network research and applications.
 
+
+\input{file_clustering}
 
 %\bibliographystyle{IEEEtran}
 %\bibliography{vehicle_mobility_model}

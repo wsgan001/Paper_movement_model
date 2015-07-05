@@ -1,12 +1,5 @@
 Paper_movement_model
 ====================
+tag figure: rename the figure dir from figures_20110303 to figures
 
-车辆移动模型论文
-
-
-特点
-====
-1.基于北京市出租车数据
-2.对出租车的状态敏感
-3.对所在区域敏感
 
