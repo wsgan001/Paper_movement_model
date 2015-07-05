@@ -1,28 +1,28 @@
 \section{Model Verification}
 \label{section_model_varification}
 
-In this section, START mobility model is validated on the aspects of node distribution with existing mobility models and the real traces. We pick two simple mobility models for comparison: one free space - Random Way Point (RWP) model, the other is constrained model, Shortest Path (SP).  SP mobility model is based on the underlying map of Beijing where vehicles move along the map roads by Dijkstra algorithm to random destinations. Both models take no consideration of the node statuses. All mobility models are implemented on Opportunistic Networking Environment (ONE)\cite{KeranenOtt-155}.
+In this section, T-START mobility model is validated on the aspects of node distribution with existing mobility models and the real traces. We pick two simple mobility models for comparison: one free space - Random Way Point (RWP) model, the other is constrained model, Shortest Path (SP).  SP mobility model is based on the underlying map of Beijing where vehicles move along the map roads by Dijkstra algorithm to random destinations. Both models take no consideration of the node statuses. All mobility models are implemented on Opportunistic Networking Environment (ONE)\cite{KeranenOtt-155}.
 
 In our simulations, vehicles are deployed in an area of $24,000\times 24,000 m^2$, including fourth ring roads in Beijing.
-To evaluate the time feature of START, 4 time periods are chosen: in the morning from 6:00:00 to 7:59:59, at noon from 11:00 to 13:00, at afternoon from 17:00 to 19:00 and lat in the evening from 22:00 to 24:00. Accordingly, we extract the real traces at corresponding time period of 21st November 2011.
+To evaluate the time feature of T-START, 4 time periods are chosen: in the morning from 6:00:00 to 7:59:59, at noon from 11:00 to 13:00, at afternoon from 17:00 to 19:00 and lat in the evening from 22:00 to 24:00. Accordingly, we extract the real traces at corresponding time period of 21st November 2011.
 3000 taxies are randomly selected. 
 We need to configure the speed range for RWP and SP mobility model. Those two models will generate a new speed randomly in the speed range. We set the speed range from 0 to twice the average speed for certain time period.
 The average speed for rwp and sp are set as $12.45 km/h$ for 6:00 to 8:00, $16.34km/h$ for 11:00 to 13:00, $13.38km/h$ for 17:00 to 19:00 and $13.59 km/h$ for 22:00 and 24:00. 
 Thus, the speed ranges for the four time periods are $[0, 24.90]km/h$, $[0, 32.68]km/h$, $[0, 26.76]km/h$ and $[0, 27.18]km/h$.
 
-Trace samples and their node distribution snapshots from different mobility models are reported in Fig.~\ref{figure_tracesample} and Fig~\ref{figure_trace_snapshots}. Fig.~\ref{figure_tracesample} shows the trace in one day. The traces of the real data and START only cover some parts of the area, while the traces of SP and RWP almost go through the whole area. Recall that SP and RWP select a destination randomly in the area, while START takes the associations between current region and destinations into consideration (which satisfies the movement rules of taxis). In Fig.~\ref{figure_trace_snapshots}, real trace, START and SP exhibit the road structures, while the node distribution of RWP is much uniform. As to START, the destination section process decides that it tends to select a destination in the regions with higher load/drop event probability. Therefore, with the decline of the randomness, the snapshot of START becomes much clear and centralized on the main roads, which matches real traces very well.
+Trace samples and their node distribution snapshots from different mobility models are reported in Fig.~\ref{figure_tracesample} and Fig~\ref{figure_trace_snapshots}. Fig.~\ref{figure_tracesample} shows the trace in one day. The traces of the real data and T-START only cover some parts of the area, while the traces of SP and RWP almost go through the whole area. Recall that SP and RWP select a destination randomly in the area, while T-START takes the associations between current region and destinations into consideration (which satisfies the movement rules of taxis). In Fig.~\ref{figure_trace_snapshots}, real trace, T-START and SP exhibit the road structures, while the node distribution of RWP is much uniform. As to T-START, the destination section process decides that it tends to select a destination in the regions with higher load/drop event probability. Therefore, with the decline of the randomness, the snapshot of T-START becomes much clear and centralized on the main roads, which matches real traces very well.
 
 Since the node distribution has a great impact on the transport and network performance, a good understanding of it can help to route and control.  However, nodes are dynamic leading to a dynamic node distribution. In order to quantify the changing node distribution,  we introduce the in/out degree. The in/out degree figures out how many taxies moving in or out from a region in a time period. In/out degree defines how many nodes moveing in or out a area during a period of time. 
 We divide the simulation scenario into grids of $ 400m \times 400 m$ to investigate the in/out degree, and the time period to measure the in/out degree is as two hours according to the simulation time. 
 The average in-degree is equal to the average of out-degree. Because if a node moves out from area A to area B, the in-degree of B adds on one, meanwhile, the out-degree of area A adds on one. The average in/out degree are shown as table \ref{table_avg_inoutdegree}, and the variance of in-degree and out-degree are shown as table \ref{table_variance_in} and \ref{table_variance_out}.
 
-From figure \ref{figure_relative_err} shows the relative error of START, SP and RWP compared with the real traces at according time.
+From figure \ref{figure_relative_err} shows the relative error of T-START, SP and RWP compared with the real traces at according time.
 The relative error is calculated as:
 \begin{equation}
     \delta = \frac{\sum \Delta x}{\sum x_{real}} 
 \end{equation}
 $\Delta x$ is the absolute value of the compare value minus the real one, and $x_real$ is the real value.
-The relative error of START is no more than 0.6, while, that of SP is more than 1.2,  and RWP is more than 0.8 for every time period. 
+The relative error of T-START is no more than 0.6, while, that of SP is more than 1.2,  and RWP is more than 0.8 for every time period. 
 \begin{table*}[!t]
 \caption{Average in/out degree.}\label{table_avg_inoutdegree}
 \centering
@@ -92,21 +92,21 @@ The relative error of START is no more than 0.6, while, that of SP is more than 
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/trace_6_1000.eps} &
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/start_6_1000.eps} &
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/sp_16_1000.eps}\\ 
-(a) Real traces of 1000 nodes, 6:00-8:00  & (b) START:1000 nodes, 6:00-8:00 & (c) SP:1000 nodes ,[0,16.67]$m/s$ \\ 
+(a) Real traces of 1000 nodes, 6:00-8:00  & (b) T-START:1000 nodes, 6:00-8:00 & (c) SP:1000 nodes ,[0,16.67]$m/s$ \\ 
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/trace_11_3000.eps} & 
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/start_11_3000.eps} &
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/sp_16_3000.eps} \\
-(d) Real traces of 3000 nodes,11:00-13:00   &(e) START:3000 nodes,11:00-13:00   &(f) SP:3000 nodes ,[0,16.67]$m/s$ \\ 
+(d) Real traces of 3000 nodes,11:00-13:00   &(e) T-START:3000 nodes,11:00-13:00   &(f) SP:3000 nodes ,[0,16.67]$m/s$ \\ 
 
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/trace_17_3000.eps} & 
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/start_22_3000.eps} &
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/sp_16_3000.eps} \\
-(g) Real traces of 3000 nodes, 17:00-19:00   &(h) START: 3000 nodes, 17:00-19:00 &(i) SP:3000 nodes ,[0,16.67]$m/s$ \\ 
+(g) Real traces of 3000 nodes, 17:00-19:00   &(h) T-START: 3000 nodes, 17:00-19:00 &(i) SP:3000 nodes ,[0,16.67]$m/s$ \\ 
 
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/trace_22_3000.eps} & 
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/start_22_3000.eps} &
 \epsfysize=1.2in\epsfbox{figures/evalue/indegree/sp_16_3000.eps} \\
-(j) Real traces of 3000 nodes, 22:00-24:00 &(k) START:3000  nodes,22:00-24:00 &(l) SP:3000  nodes ,[0,16.67]$m/s$ \\ 
+(j) Real traces of 3000 nodes, 22:00-24:00 &(k) T-START:3000  nodes,22:00-24:00 &(l) SP:3000  nodes ,[0,16.67]$m/s$ \\ 
 \end{tabular}
 \caption{In-degree distribution}\label{figure_in_degree_dis}
 \end{figure*}

@@ -9,15 +9,15 @@ For the free space scenario, the random way point (RWP) model \cite{broch1998per
 In this paper, we argue that the taxi behavior and geographic features are strongly related to the status of the taxi. In addition, time is another factor effecting the taxi behavior because the passenger flow volume varies with time. Meanwhile, the passenger flow volume effects the quantity of working taxies. We validate such claims by statistical analysis over a large-scale Beijing taxi trace data. 
 
 
-Based on these discoveries, we propose a \emph{STAtus and Region aware Taxi mobility model} (START). In the macro scope, instead of simply dividing the area into coarse-grain regions, START divides the area into two set of regions according to the density of passenger load or drop events for each time period.
+Based on these discoveries, we propose a \emph{STAtus and Region aware Taxi mobility model} (START). In the macro scope, instead of simply dividing the area into coarse-grain regions, T-START divides the area into two set of regions according to the density of passenger load or drop events for each time period.
 
 
 When a taxi takes a passenger, the current location is selected from the set of load-event regions. The destination region, where the drop event happens, is selected in the set of drop-event regions.
 
 
 
-We investigate the relationship between load-event regions and drop-event regions and use it to decide the start point and destination. Routes from the start points to destinations are found by Dijkstra algorithm. For microscope, the speed of the taxi is generated based on its status, which is learned via statistical analysis. Extensive simulations are carried out to compare the similarity of node trace characteristics and contact characteristics. The results show that START model has a good approximation of the real scenario in trace samples, in terms of distribution of nodes and the contact characteristics. To the best of our knowledge, our work is original to develop mobility models by investigating taxi behavior and geographic features of different statuses.
+We investigate the relationship between load-event regions and drop-event regions and use it to decide the start point and destination. Routes from the start points to destinations are found by Dijkstra algorithm. For microscope, the speed of the taxi is generated based on its status, which is learned via statistical analysis. Extensive simulations are carried out to compare the similarity of node trace characteristics and contact characteristics. The results show that T-START model has a good approximation of the real scenario in trace samples, in terms of distribution of nodes and the contact characteristics. To the best of our knowledge, our work is original to develop mobility models by investigating taxi behavior and geographic features of different statuses.
 
-The rest of this paper is organized as follows. Section \ref{section_assumptions_anlysis} provides the statistical results from real data to validate two important assumptions for START model. Section \ref{section_modeling} presents the detail of START model. Simulation results are reported in Section \ref{section_model_varification}. Finally, Section \ref{section_conclusion} concludes this paper.
+The rest of this paper is organized as follows. Section \ref{section_assumptions_anlysis} provides the statistical results from real data to validate three important assumptions for T-START model. Section \ref{section_modeling} presents the detail of T-START model. Simulation results are reported in Section \ref{section_model_varification}. Finally, Section \ref{section_conclusion} concludes this paper.
 
 
