@@ -135,13 +135,10 @@ The average in-degree is equal to the average of out-degree. Because if a node m
 \hline
  6:00-8:00	&
 5529.15&	3831.87&	3921.02&	1357.65\\ 
-\hline
  11:00-13:00&
 9248.90&	9242.24&	6451.22&	1640.09\\
-\hline
  17:00-19:00&
 7049.92&	5030.80&	4786.30&	1324.26\\
-\hline
  22:00-24:00&
 7195.60&	6262.78&	4507.69&	1360.58\\
 \hline
@@ -154,13 +151,10 @@ The average in-degree is equal to the average of out-degree. Because if a node m
 \hline
  6:00-8:00	&
 5,399.18&3,762.11&3,863.69&1,358.32\\
-\hline
  11:00-13:00&
 9,097.05&9,115.16&6,372.64&1,645.25\\
-\hline
  17:00-19:00&
 6,903.07&4,943.84&4,716.90&1,329.40\\
-\hline
  22:00-24:00&
 7,102.49&6,175.93&4507.70&1,362.19\\
 \hline
@@ -174,34 +168,31 @@ The relative error is calculated as:
 \end{equation}
 $\Delta x$ is the absolute value of the compare value minus the real one, and $x_real$ is the real value.
 The relative error of T-START is no more than 0.6, while, that of SP is more than 1.2,  and RWP is more than 0.8 for every time period. 
+\begin{figure}[!h]
+\centering
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/17indegree_rwp.eps} 
+\caption{The indegree distribtion for RWP from 17:00 to 19:00}
+\end{figure}
 \begin{figure*}[!t]
 \centering
 \begin{tabular}
-[c]{cc}
-\epsfysize=2in\epsfbox{figures/evalue/indegree/indegree_trace.eps} &
-\epsfysize=2in\epsfbox{figures/evalue/indegree/indegree_start.eps} \\
-(a) Traces of Nov.8th & (b) T-START\\
-\epsfysize=2in\epsfbox{figures/evalue/indegree/indegree_sp.eps} &
-\epsfysize=2in\epsfbox{figures/evalue/indegree/indegree_rwp.eps} \\
-(c) SP & (d) RWP \\
+[c]{ccc}
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/6indegree_trace.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/6indegree_start.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/6indegree_sp.eps} \\
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/11indegree_trace.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/11indegree_start.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/11indegree_sp.eps} \\
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/17indegree_trace.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/17indegree_start.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/17indegree_sp.eps} \\
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/22indegree_trace.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/22indegree_start.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/indegree/22indegree_sp.eps} \\
+(a) Traces of Nov.8th & (b) T-START & (c) SP \\
 \end{tabular}
-\caption{Relative Error}\label{figure_relative_err}
+\caption{indegree distribution}\label{figure_relative_err}
 \end{figure*}
-
-\begin{figure*}[!t]
-\centering
-\begin{tabular}
-[c]{cc}
-\epsfysize=1.5in\epsfbox{figures/evalue/indegree/relative_err_6.eps} &
-\epsfysize=1.5in\epsfbox{figures/evalue/indegree/relative_err_6.eps}\\ 
-(a) compare to real traces from 6:00 to 8:00 & (b) from 11:00 to 13:00 \\
-\epsfysize=1.5in\epsfbox{figures/evalue/indegree/relative_err_6.eps} & 
-\epsfysize=1.5in\epsfbox{figures/evalue/indegree/relative_err_6.eps} \\
-(c) from 17:00-19:00 & (d) from 22:00 to 24:00 \\
-\end{tabular}
-\caption{Relative Error}\label{figure_relative_err}
-\end{figure*}
-
 \begin{table}[!h]
 \caption{The relative error.}\label{table_relative_err}
 \centering
