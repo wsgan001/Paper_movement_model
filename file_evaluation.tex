@@ -11,10 +11,161 @@ The average speed for rwp and sp are set as $12.45 km/h$ for 6:00 to 8:00, $16.3
 Thus, the speed ranges for the four time periods are $[0, 24.90]km/h$, $[0, 32.68]km/h$, $[0, 26.76]km/h$ and $[0, 27.18]km/h$.
 
 Trace samples and their node distribution snapshots from different mobility models are reported in Fig.~\ref{figure_tracesample} and Fig~\ref{figure_trace_snapshots}. Fig.~\ref{figure_tracesample} shows the trace in one day. The traces of the real data and T-START only cover some parts of the area, while the traces of SP and RWP almost go through the whole area. Recall that SP and RWP select a destination randomly in the area, while T-START takes the associations between current region and destinations into consideration (which satisfies the movement rules of taxis). In Fig.~\ref{figure_trace_snapshots}, real trace, T-START and SP exhibit the road structures, while the node distribution of RWP is much uniform. As to T-START, the destination section process decides that it tends to select a destination in the regions with higher load/drop event probability. Therefore, with the decline of the randomness, the snapshot of T-START becomes much clear and centralized on the main roads, which matches real traces very well.
-
+\begin{table*}[!t]
+\centering
+\caption{The relative error compared with the average for in-degree and out-degree}\label{table_relative_err_avg}
+\begin{tabular}[c]{c|c|c|c|c|c|c|c}
+\multicolumn{8}{c}{(a) in-degree}\\
+\hline
+item& 1th&2th&3th&4th&5th&6th&7th\\
+\hline
+6:00-8:00&
+0.1139& 
+0.1485&
+0.1732&
+0.1372&
+0.1500&
+0.2489&
+0.1507\\
+\hline
+11:00-13:00&
+0.1056&
+0.0953&
+0.1509&
+0.0994&
+0.1714&
+0.1294&
+0.1011\\
+\hline
+17:00-19:00&
+0.1537&
+0.1728&
+0.1491&
+0.1888&
+0.1338&
+0.1303&
+0.1407\\
+\hline
+22:00-24:00&
+0.1360&
+0.1054&
+0.1637&
+0.1183&
+0.1467&
+0.1470&
+0.1076\\
+\hline
+\end{tabular}
+\begin{tabular}[c]{c|c|c|c|c|c|c|c}
+\multicolumn{8}{c}{(b) out-degree}\\
+\hline
+item& 1th&2th&3th&4th&5th&6th&7th\\
+\hline
+6:00-8:00&
+0.1132&
+0.1481&
+0.1726&
+0.1374&
+0.1499&
+0.2478&
+0.1507\\
+\hline
+11:00-13:00&
+0.1057&
+0.0953&
+0.1509&
+0.0998&
+0.1719&
+0.1296&
+0.1012\\
+\hline
+17:00-19:00&
+0.1534&
+0.1725&
+0.1488&
+0.1890&
+0.1336&
+0.1298&
+0.1412\\
+\hline
+22:00-24:00&
+0.1358&
+0.1057&
+0.1636&
+0.1184&
+0.1468&
+0.1469&
+0.1075\\
+\hline
+\end{tabular}
+\end{table*}
 Since the node distribution has a great impact on the transport and network performance, a good understanding of it can help to route and control.  However, nodes are dynamic leading to a dynamic node distribution. In order to quantify the changing node distribution,  we introduce the in/out degree. The in/out degree figures out how many taxies moving in or out from a region in a time period. In/out degree defines how many nodes moveing in or out a area during a period of time. 
 We divide the simulation scenario into grids of $ 400m \times 400 m$ to investigate the in/out degree, and the time period to measure the in/out degree is as two hours according to the simulation time. 
 The average in-degree is equal to the average of out-degree. Because if a node moves out from area A to area B, the in-degree of B adds on one, meanwhile, the out-degree of area A adds on one. The average in/out degree are shown as table \ref{table_avg_inoutdegree}, and the variance of in-degree and out-degree are shown as table \ref{table_variance_in} and \ref{table_variance_out}.
+\begin{table}[!h]
+\caption{Average in/out-degree.}\label{table_avg_inoutdegree}
+\centering
+\begin{tabular}{r|c|c|c|c}
+\hline
+	&trace in Nov.8th	&start	&sp	&rwp	\\
+\hline
+6:00-8:00&
+52.899&50.868&55.801&45.797\\
+\hline
+11:00-13:00&
+70.220&78.547&65.305&56.835\\  
+\hline
+17:00-19:00&
+64.004&62.952&58.519&	48.498\\
+\hline
+22:00-24:00&
+63.993&69.644&	58.535&	49.271\\	
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\caption{Variance of the in/out-degree.}\label{table_variance_out}
+\centering
+\begin{tabular}{r|c|c|c|c}
+\hline
+\multicolumn{5}{c}{(a) in-degree}\\
+\hline
+	&trace of 8th	&start	&sp	&rwp\\
+\hline
+ 6:00-8:00	&
+5529.15&	3831.87&	3921.02&	1357.65\\ 
+\hline
+ 11:00-13:00&
+9248.90&	9242.24&	6451.22&	1640.09\\
+\hline
+ 17:00-19:00&
+7049.92&	5030.80&	4786.30&	1324.26\\
+\hline
+ 22:00-24:00&
+7195.60&	6262.78&	4507.69&	1360.58\\
+\hline
+\end{tabular}
+\begin{tabular}{r|c|c|c|c}
+\hline
+\multicolumn{5}{c}{(b) out-degree}\\
+\hline
+	&trace of 8th	&start	&sp	&rwp\\
+\hline
+ 6:00-8:00	&
+5,399.18&3,762.11&3,863.69&1,358.32\\
+\hline
+ 11:00-13:00&
+9,097.05&9,115.16&6,372.64&1,645.25\\
+\hline
+ 17:00-19:00&
+6,903.07&4,943.84&4,716.90&1,329.40\\
+\hline
+ 22:00-24:00&
+7,102.49&6,175.93&4507.70&1,362.19\\
+\hline
+\end{tabular}
+\end{table}
 
 From figure \ref{figure_relative_err} shows the relative error of T-START, SP and RWP compared with the real traces at according time.
 The relative error is calculated as:
@@ -23,94 +174,19 @@ The relative error is calculated as:
 \end{equation}
 $\Delta x$ is the absolute value of the compare value minus the real one, and $x_real$ is the real value.
 The relative error of T-START is no more than 0.6, while, that of SP is more than 1.2,  and RWP is more than 0.8 for every time period. 
-\begin{table*}[!t]
-\caption{Average in/out degree.}\label{table_avg_inoutdegree}
-\centering
-\begin{tabular}{r|c|c|c|c}
-\hline
-	&trace in Nov.8th	&start	&sp	&rwp	\\
-\hline
-6:00-8:00(1000 nodes)
-52.899444&&55.801389	&45.797222\\
-\hline
-11:00-13:00(3000 nodes)&
-70.220278&&	65.305556&	56.835278\\  
-\hline
-17:00-19:00(3000 nodes)&
-64.004444&&	58.519444&	48.498611\\
-\hline
-22:00-24:00(3000 nodes)&
-63.993056&&	58.535278&	49.271111\\	
-\hline
-\end{tabular}
-\end{table*}
-
-%%\begin{table*}[!t]
-%%\caption{Variance of the in-degree.}\label{table_variance_in}
-%%\centering
-%%\begin{tabular}{r|c|c|c|c}
-%%\hline
-%%	&trace	&start	&rwp-16.67	&rwp-22.22	\\
-%%\hline
-%%6:00-8:00(1000 nodes)&1667.36&948.45&398.70&583.10\\
-%%\hline
-%%11:00-13:00(3000 nodes)	&12247.03&7212.91&3433.44&5057.05\\
-%%\hline
-%%17:00-19:00(3000 nodes)&10817.04&6860.84&3433.44&5057.05\\
-%%\hline
-%%22:00-24:00(3000 nodes)	&11157.84&5779.23&3433.44&5057.05\\
-%%\hline
-%%\end{tabular}
-%%\end{table*}
-%%计算方差
-\begin{table*}[!t]
-\caption{Variance of the out-degree.}\label{table_variance_out}
-\centering
-\begin{tabular}{r|c|c|c|c}
-\hline
-	&trace	&start	&sp	&rwp\\
-\hline
- 6:00-8:00(1000 nodes)	&
-5,399.184899&&	1,358.321861&	3,863.688320\\
-\hline
- 11:00-13:00(3000 nodes)&
-9,097.055152&&	1,645.250298&	6,100.34594\\
-\hline
- 17:00-19:00(3000 nodes)&
-6,903.077764&&	1,329.406962&	4,505.14132\\
-\hline
- 22:00-24:00(3000 nodes)&
-7,102.494053&&	1,362.195241&	4,507.694302\\
-\hline
-\end{tabular}
-\end{table*}
-
 \begin{figure*}[!t]
 \centering
 \begin{tabular}
-[c]{ccc}
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/trace_6_1000.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/start_6_1000.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/sp_16_1000.eps}\\ 
-(a) Real traces of 1000 nodes, 6:00-8:00  & (b) T-START:1000 nodes, 6:00-8:00 & (c) SP:1000 nodes ,[0,16.67]$m/s$ \\ 
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/trace_11_3000.eps} & 
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/start_11_3000.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/sp_16_3000.eps} \\
-(d) Real traces of 3000 nodes,11:00-13:00   &(e) T-START:3000 nodes,11:00-13:00   &(f) SP:3000 nodes ,[0,16.67]$m/s$ \\ 
-
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/trace_17_3000.eps} & 
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/start_22_3000.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/sp_16_3000.eps} \\
-(g) Real traces of 3000 nodes, 17:00-19:00   &(h) T-START: 3000 nodes, 17:00-19:00 &(i) SP:3000 nodes ,[0,16.67]$m/s$ \\ 
-
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/trace_22_3000.eps} & 
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/start_22_3000.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/indegree/sp_16_3000.eps} \\
-(j) Real traces of 3000 nodes, 22:00-24:00 &(k) T-START:3000  nodes,22:00-24:00 &(l) SP:3000  nodes ,[0,16.67]$m/s$ \\ 
+[c]{cc}
+\epsfysize=2in\epsfbox{figures/evalue/indegree/indegree_trace.eps} &
+\epsfysize=2in\epsfbox{figures/evalue/indegree/indegree_start.eps} \\
+(a) Traces of Nov.8th & (b) T-START\\
+\epsfysize=2in\epsfbox{figures/evalue/indegree/indegree_sp.eps} &
+\epsfysize=2in\epsfbox{figures/evalue/indegree/indegree_rwp.eps} \\
+(c) SP & (d) RWP \\
 \end{tabular}
-\caption{In-degree distribution}\label{figure_in_degree_dis}
+\caption{Relative Error}\label{figure_relative_err}
 \end{figure*}
-
 
 \begin{figure*}[!t]
 \centering
@@ -125,3 +201,36 @@ The relative error of T-START is no more than 0.6, while, that of SP is more tha
 \end{tabular}
 \caption{Relative Error}\label{figure_relative_err}
 \end{figure*}
+
+\begin{table}[!h]
+\caption{The relative error.}\label{table_relative_err}
+\centering
+\begin{tabular}{r|c|c|c|c}
+\hline
+	&trace of 8th	&start	&sp	&rwp\\
+\hline
+ 6:00-8:00&
+0.1278&	0.4927&	0.6912&	0.8037\\ 
+ 11:00-13:00&
+0.1051&	0.4888&	0.6445&	0.8360\\
+ 17:00-19:00&
+0.1161&	0.4694&	0.6514&	0.8382\\
+ 22:00-24:00&
+0.1276&	0.4812&	0.6574&	0.8177\\
+\hline
+\end{tabular}
+\begin{tabular}{r|c|c|c|c}
+\hline
+	&trace of 8th	&start	&sp	&rwp\\
+\hline
+ 6:00-8:00&
+0.1279&	0.4952&	0.6884&	0.8030\\
+ 11:00-13:00&
+0.1055&	0.4908&	0.6434&	0.8371\\
+ 17:00-19:00&
+0.1160&	0.4730&	0.6492&	0.8380\\
+ 22:00-24:00&
+0.1276&	0.4842&	0.6555&	0.8179\\
+\hline
+\end{tabular}
+\end{table}
