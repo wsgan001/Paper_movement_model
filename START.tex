@@ -75,22 +75,18 @@ Next, we analyze the speed, duration and passenger load/drop events distribution
 
 \input{file_speed_modeling}
 
-%\input{file_lasting_time_modeling}
-
 \input{file_evaluation}
 
 \section{Conclusion}
 \label{section_conclusion}
-Since the mobility model is important for vehicular networks and other smart cities applications, a new mobility model T-START based on real taxi GPS data is proposed. By assuming the taxi behavior is related with its statuses and geographic features, statistical experiments are conducted to verify those assumptions using the real trace data. With carefully estimations of the average speed distribution of each status and the region transition probability between drop and load event regions, T-START considers both macroscopic and microscopic movements. For the macroscopic movements, a node moves and switches between load-event regions and drop-event regions. Then the microscopic movements (such as speeds for each status) can be applied. T-START is implemented and evaluated in ONE simulator by comparing with the real trace, RWP and SP mobility models.
-For both node distribution and contact features, T-START shows better performance than the other two mobility models. This demonstrates that T-START has a good approximation with reality and can be used for urban vehicular network research and applications.
-
-
+Since the mobility model is important for transportaion and other smart cities applications, a new mobility model T-START based on real taxi GPS data is proposed. By assuming the taxi behavior is related with its statuses , geographic features and time, statistical experiments are conducted to verify those assumptions using the real trace data. With carefully estimations of the speed distribution of each status for different time periods and the region transition probability between drop and load event regions, T-START considers both macroscopic and microscopic movements. For the macroscopic movements, a node moves and switches between load-event regions and drop-event regions. Then the microscopic movements (such as speeds for each status in the corresponding time period) can be applied. T-START is implemented and evaluated in ONE simulator by comparing with the real trace, RWP and SP mobility models.
+For node distribution, T-START shows better performance than the other two mobility models with relative error about 0.49 compared with the average in/out-degree for seven days, while that of SP and RWP is more than 0.67. To insure the in/out-degree for several days remain consistent, we compare the in/out-degree of every single day of the seven days and another day (Nov.8th) to that of the average value, the relative errors stays low around 0.2. This demonstrates that T-START has a good approximation with reality and can be used for urban transportation research and applications.
 \input{file_clustering}
 
 %\bibliographystyle{IEEEtran}
 %\bibliography{vehicle_mobility_model}
 
-\begin{thebibliography}{10}
+\begin{thebibliography}{11}
 
 \bibitem{LuChen-104}
 X.~Lu, Y.-c. Chen, I.~Leung, Z.~Xiong, and P.~Lio, ``A novel mobility model
