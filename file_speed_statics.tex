@@ -1,32 +1,36 @@
 \subsection{Taxi Status Speed and Duration}
-We first investigate the average speed $\overline{speed}$ in each status. If taxi $i$ drives in occupied status for a distance $d$ using time $t$, then its average speed in this status is $d/t$.
-From March 3 to 7, 2011, ${\overline{speed}_{vacant}} = 3.627 m/s$, while ${\overline{speed}_{occupied}}=7.083 m/s$. Clearly, occupied taxis drive faster. To further investigate the cumulative speed distribution, proportion for every $\overline{speed}$ section is calculated and plotted in Fig.~\ref{figure_speed_distribution}. Here, a point at $(5,0.2)$ means $20\%$ records fall in the range $[0,5)km/h$. We also fit the speed to model the microscope behavior (will be discussed in Section \ref{section_modeling}). Fig.~\ref{figure_speed_distribution} shows that $\overline{speed}$ distribution differs for each status and with strong regularity for each status.
+The instantaneous speed distributions for the two status for different time periods are explored.
+
 \begin{figure}[!h]
 \centering
-\includegraphics[width=0.4\textwidth]{figures/fit/speedfit.eps}
-\caption{Speed distributions for vacant and occupied statuses.}\label{figure_speed_distribution}
+\begin{tabular}
+[c]{c}
+\epsfysize=1.5in\epsfbox{figures/analysis/avgsp_vacant.eps} \\
+(a) vacant status \\ 
+\epsfysize=1.5in\epsfbox{figures/analysis/avgsp_occupied.eps} \\
+(b) occupied status \\
+\end{tabular}
+\caption{Average speed for every hour.}\label{figure_avg_speed}
 \end{figure}
-
-The instantaneous speed distributions for the two status for different time period are also explored.
-
-\begin{figure*}[!t]
+\begin{figure}[!h]
 \centering
 \begin{tabular}
-[c]{cccc}
+[c]{cc}
 \epsfysize=1.2in\epsfbox{figures/analysis/speed6_0.eps} &
+\epsfysize=1.2in\epsfbox{figures/analysis/speed6_1.eps} \\ 
+\multicolumn{2}{c}{6:00-8:00}\\
 \epsfysize=1.2in\epsfbox{figures/analysis/speed11_0.eps} &
+\epsfysize=1.2in\epsfbox{figures/analysis/speed11_1.eps}\\
+\multicolumn{2}{c}{11:00-13:00}\\
 \epsfysize=1.2in\epsfbox{figures/analysis/speed17_0.eps} &
-\epsfysize=1.2in\epsfbox{figures/analysis/speed22_0.eps} \\
-(a) 6:00-8:00 & (b) 11:00-13:00 &
-(c) 17:00-19:00 & (d) 22:00-24:00\\
-\epsfysize=1.2in\epsfbox{figures/analysis/speed6_1.eps} &
-\epsfysize=1.2in\epsfbox{figures/analysis/speed11_1.eps} &
-\epsfysize=1.2in\epsfbox{figures/analysis/speed17_1.eps} &
-\epsfysize=1.2in\epsfbox{figures/analysis/speed22_1.eps} \\
-(a) 6:00-8:00 & (b) 11:00-13:00 &
-(c) 17:00-19:00 & (d) 22:00-24:00\\
+\epsfysize=1.2in\epsfbox{figures/analysis/speed17_1.eps}\\
+\multicolumn{2}{c}{17:00-19:00}\\
+\epsfysize=1.2in\epsfbox{figures/analysis/speed22_0.eps} &
+\epsfysize=1.2in\epsfbox{figures/analysis/speed22_1.eps}\\
+\multicolumn{2}{c}{22:00-24:00}\\
+(a) vacant status& (b) occupied status\\
 \end{tabular}
-\caption{taxi speed distribution}\label{figure_fitspeed_varid_width_time}
-\end{figure*}
-
-
+\caption{Speed distributions for vacant and occupied statuses.}\label{figure_speed_distribution}
+\end{figure}
+We calculate the average speed in every hour for vacant and occupied status from November 1 to 7, 2011, shown as Fig.~\ref{figure_avg_speed}. Clearly, occupied taxis drive faster. And the average speed is affected by time, especially for the occupied status. The average speed for the vacant status keep in a low-speed. To further investigate the cumulative speed distribution, proportion for every speed section is calculated and plotted in Fig.~\ref{figure_speed_distribution}. Here, a point at $(5,0.2)$ means $20\%$ records fall in the range $[0,5)km/h$. We also fit the speed to model the microscope behavior (will be discussed in Section \ref{section_modeling}). Fig.~\ref{figure_speed_distribution} shows that speed distribution differs for each status and with strong regularity for each status at corresponding time.
+In Fig.~\ref{figure_speed_distribution}(b) from 6:00 to 8:00, curves of Nov 5 and Nov 6 are different from other curves. This may because Nov 5 and Nov 6 are weekend and more workers will get up late at weekend. So the vehicle volume in the weekend morning will decrease so that the speed will increase. 
