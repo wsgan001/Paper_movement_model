@@ -1,6 +1,27 @@
 \subsection{Speed Distribution}
 \label{section_speed_modeling}
-To obtain the speed distribution of each status, we fit the cumulative instantaneous speed distribution to get the cumulative probability distribution function, and then take a derivative with it to obtain the speed probability distribution. From Fig.~\ref{figure_speed_distribution}, Except for that of occupied status from 22:00 to 24:00, other instantaneous speed distribution shows exponential law. Given that, we fit the other speed distribution as $f_1(x)$, and fit that of occupied from 22:00 to 24:00 by $f_2(x)$, in order to eliminate the effect caused by the weekend, we remove the speed distribution data, such as that of occupied status from 6:00 to 8:00, to generalize the fitting results. 
+\begin{figure}[!h]
+\centering
+\begin{tabular}
+[c]{cc}
+\multicolumn{2}{c}{6:00-8:00}\\
+\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed6_0.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed6_1.eps} \\
+\multicolumn{2}{c}{11:00-13:00}\\
+\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed11_0.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed11_1.eps} \\
+\multicolumn{2}{c}{17:00-19:00}\\
+\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed17_0.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed17_1.eps} \\
+\multicolumn{2}{c}{22:00-24:00}\\
+\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed22_0.eps} &
+\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed22_1.eps} \\
+(a) vacant status & (b) occupied status \\
+\end{tabular}
+\caption{fit result for taxi speed distribution}\label{figure_fitspeed_varied_with_time}
+\end{figure}
+
+To obtain the speed distribution of each status, we fit the cumulative instantaneous speed distribution to get the cumulative probability distribution function, and then take a derivative with it to obtain the speed probability distribution. From Fig.~\ref{figure_fitspeed_varied_with_time}, the instantaneous speed distribution shows exponential law expcet for that of occupied status from 22:00 to 24:00. Given that, we fit the speed distribution by an exponential function $f_1(x)$, and fit the cumulative speed distribution of occupied status from 22:00 to 24:00 by a linear function $f_2(x)$, as formular \ref{formular_ccdf_speed}. In order to eliminate the influence caused by the weekend, we remove the speed distribution data such as the data of occupied status from 6:00 to 8:00, to generalize the fitting results. 
 \begin{equation}\label{formular_ccdf_speed}
 \left\{
 \begin{array}{ll}
@@ -9,30 +30,7 @@ f_2(x) = ax+b
 \end{array}
 \right.
 \end{equation}
-
-\begin{figure*}[!t]
-\centering
-\begin{tabular}
-[c]{cccc}
-\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed6_0.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed11_0.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed17_0.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed22_0.eps} \\
-(a) 6:00-8:00 & (b) 11:00-13:00 &
-(c) 17:00-19:00 & (d) 22:00-24:00\\
-\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed6_1.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed11_1.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed17_1.eps} &
-\epsfysize=1.2in\epsfbox{figures/evalue/fitspeed22_1.eps} \\
-(a) 6:00-8:00 & (b) 11:00-13:00 &
-(c) 17:00-19:00 & (d) 22:00-24:00\\
-\end{tabular}
-\caption{fit result for taxi speed distribution}\label{figure_fitspeed_varid_width_time}
-\end{figure*}
-
-
 Here, $f_i(x)$ is the function form for the instantaneous speed distribution. The \emph{root mean square} (rms) of residuals for each fit are reported in Table~\ref{table_rms}. The smaller rms of residuals means better fitting. In this table, the values are all less than $0.025$, showing good similarity.
-
 \begin{table}[!h]
 \caption{Parameters and rms of residuals of fitting curves}\label{table_rms}
 \centering
